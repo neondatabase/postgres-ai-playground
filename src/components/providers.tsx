@@ -12,10 +12,11 @@ type ProvidersProps = {
 export default function Providers({ children }: ProvidersProps) {
   return (
     <ThemeProvider attribute="data-theme">
-      <QueryClientProvider client={queryClient}></QueryClientProvider>
-      <Analytics />
-      <Toaster />
-      {children}
+      <QueryClientProvider client={queryClient}>
+        <Analytics />
+        <Toaster />
+        {children}
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }
