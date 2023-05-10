@@ -9,13 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.4.3",
     "@radix-ui/react-accordion": "^1.1.1",
     "@radix-ui/react-dialog": "^1.0.3",
     "@radix-ui/react-label": "^2.0.1",
     "@radix-ui/react-select": "^1.2.1",
     "@tanstack/react-query": "^4.29.5",
     "@vercel/analytics": "^1.0.1",
-    "@vercel/postgres": "^0.3.0",
     "clsx": "^1.2.1",
     "framer-motion": "^10.12.10",
     "jotai": "^2.1.0",
@@ -24,6 +24,7 @@
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-hot-toast": "^2.4.1",
     "react-resizable-panels": "^0.0.43",
     "tailwind-merge": "^1.12.0"

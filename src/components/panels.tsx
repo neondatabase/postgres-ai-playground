@@ -4,6 +4,7 @@ import { useAtom } from 'jotai';
 import { cn } from '@/utils/cn';
 import { selectedLayoutAtom, showResultPanelAtom } from '@/utils/atoms';
 import { Results } from './results';
+import { Sidebar } from './sidebar';
 
 export const Panels = () => {
   const [selectedLayout] = useAtom(selectedLayoutAtom);
@@ -18,7 +19,9 @@ export const Panels = () => {
             defaultSize={12}
             minSize={12}
             maxSize={50}
-          ></Panel>
+          >
+            <Sidebar />
+          </Panel>
           <PanelResizeHandle className="w-2 focus-visible:outline-none border-r border-r-gray-subtle focus-visible:border-r-2 focus-visible:border-r-gray-hover" />
           <Panel defaultSize={88} minSize={50}>
             <PanelGroup direction={selectedLayout}>
