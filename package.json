@@ -17,12 +17,14 @@
     "@vercel/analytics": "^1.0.1",
     "clsx": "^1.2.1",
     "framer-motion": "^10.12.10",
+    "jotai": "^2.1.0",
     "lucide-react": "^0.215.0",
     "next": "13.4.1",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-resizable-panels": "^0.0.43",
     "tailwind-merge": "^1.12.0"
   },
   "devDependencies": {
