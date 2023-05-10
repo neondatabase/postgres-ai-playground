@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ͼ2 .cm-gutters {
+  @apply border-transparent;
+}
