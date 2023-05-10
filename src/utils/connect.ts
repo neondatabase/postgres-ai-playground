@@ -1,4 +1,4 @@
-import { Pool } from '@vercel/postgres';
+import { Pool } from '@neondatabase/serverless';
 
 type ConnectOptions = {
   connectionString: string;
