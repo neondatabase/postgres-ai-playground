@@ -2,16 +2,25 @@
 import { PanelGroup, Panel, PanelResizeHandle } from 'react-resizable-panels';
 import { useAtom } from 'jotai';
 import { cn } from '@/utils/cn';
-import { selectedLayoutAtom, showResultPanelAtom } from '@/utils/atoms';
+import {
+  hasConfiguredDatabaseAtom,
+  selectedLayoutAtom,
+  showResultPanelAtom,
+} from '@/utils/atoms';
 import { Results } from './results';
 import { Sidebar } from './sidebar';
+import { Editor } from './editor';
 
 export const Panels = () => {
   const [selectedLayout] = useAtom(selectedLayoutAtom);
   const [showResultPanel] = useAtom(showResultPanelAtom);
-
+  const [hasConfiguredDatabase] = useAtom(hasConfiguredDatabaseAtom);
   return (
-    <div>
+    <div className="relative">
+      {!hasConfiguredDatabase && (
+        <div className="fixed backdrop-blur-[2px] z-10 left-0 top-0 w-full h-full" />
+      )}
+
       <div className={cn('h-[92vh]')}>
         <PanelGroup direction="horizontal">
           <Panel
@@ -25,7 +34,9 @@ export const Panels = () => {
           <PanelResizeHandle className="w-2 focus-visible:outline-none border-r border-r-gray-subtle focus-visible:border-r-2 focus-visible:border-r-gray-hover" />
           <Panel defaultSize={88} minSize={50}>
             <PanelGroup direction={selectedLayout}>
-              <Panel className="" defaultSize={45} minSize={10}></Panel>
+              <Panel defaultSize={45} minSize={10}>
+                <Editor />
+              </Panel>
               <PanelResizeHandle
                 className={cn(
                   selectedLayout === 'horizontal'

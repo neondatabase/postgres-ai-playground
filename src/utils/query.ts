@@ -11,11 +11,11 @@ export const runQuery = async ({ connectionString, query }: queryOptions) => {
       connectionString,
     });
 
-    const { rows, rowCount } = await client.query(query);
+    const { rows, rowCount, fields } = await client.query(query);
 
     client.end();
 
-    return { rows, rowCount };
+    return { rows, rowCount, columns: fields.map((field) => field.name) };
   } catch (error) {
     console.log('error', error);
     throw new Error(error);

@@ -11,7 +11,7 @@ export const Sidebar = () => {
   const [hasConfiguredDatabase] = useAtom(hasConfiguredDatabaseAtom);
 
   const { data, isLoading, error } = useQuery(
-    ['data'],
+    ['schema'],
     async () => {
       const res = await connect({
         connectionString: connectionString,
@@ -27,7 +27,6 @@ export const Sidebar = () => {
     }
   );
 
-  console.log(data);
   return (
     <div className="flex flex-1 flex-col space-y-2 overflow-y-auto px-3 py-5">
       {data && (

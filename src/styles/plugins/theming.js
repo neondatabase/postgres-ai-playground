@@ -18,8 +18,8 @@ const themes = [
       'ring-gray-subtle': '#dfe3e6',
       'ring-gray-primary': '#d7dbdf',
       'ring-gray-hover': '#c1c8cd',
-      'bg-solid': '#8F8F8F',
-      'bg-solid-hover': '#858585',
+      'bg-solid': '#30A46C',
+      'bg-solid-hover': '#299764',
       'text-gray-base': '#687076',
       'text-gray-high-contrast': '#11181c',
 
@@ -65,8 +65,8 @@ const themes = [
       'ring-gray-subtle': '#313538',
       'ring-gray-primary': '#3a3f42',
       'ring-gray-hover': '#4c5155',
-      'bg-solid': '#707070',
-      'bg-solid-hover': '#7E7E7E',
+      'bg-solid': '#30A46C',
+      'bg-solid-hover': '#3CB179',
       'text-gray-base': '#9ba1a6',
       'text-gray-high-contrast': '#ecedee',
 

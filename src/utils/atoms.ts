@@ -23,6 +23,7 @@ export const queryResultAtom = atom<
   | {
       rows: any[];
       rowCount: number;
+      columns: string[];
     }
   | undefined
 >(undefined);

@@ -38,6 +38,7 @@ import {
   Play,
   Network,
   Columns,
+  CornerRightUp,
   Table as Tables,
 } from 'lucide-react';
 import { forwardRef } from 'react';
@@ -45,7 +46,10 @@ import { forwardRef } from 'react';
 const Logo = ({ className }: LucideProps) => {
   return (
     <svg
-      className={cn('h-6 w-6', className)}
+      className={cn(
+        'h-6 w-6 hover:text-gray-high-contrast transition-colors',
+        className
+      )}
       width="226"
       height="226"
       viewBox="0 0 226 226"
@@ -107,6 +111,7 @@ export enum IconsList {
   Columns,
   Views,
   Tables,
+  CornerRightUp,
 }
 
 const icons: Record<keyof typeof IconsList, IconType> = {
@@ -150,6 +155,7 @@ const icons: Record<keyof typeof IconsList, IconType> = {
   Columns: Columns,
   Tables: Tables,
   Views: Tables,
+  CornerRightUp: CornerRightUp,
 };
 
 interface IconProps {

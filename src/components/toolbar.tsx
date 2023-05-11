@@ -30,7 +30,7 @@ export const Toolbar = () => {
         >
           <path d="M16.88 3.549L7.12 20.451"></path>
         </svg>
-        <span className="ml-1 lg:text-lg font-semibold">
+        <span className="ml-1 lg:text-lg font-semibold text-gray-high-contrast">
           Postgres AI Playground
         </span>
       </div>
