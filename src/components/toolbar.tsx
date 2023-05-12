@@ -14,7 +14,12 @@ export const Toolbar = () => {
   return (
     <div className="sticky top-0 z-30 px-4 lg:px-6 flex items-center justify-between py-4 border-b border-b-gray-subtle bg-app">
       <div className="inline-flex items-center">
-        <a href="https://neon.tech" rel="noopener" target="_blank">
+        <a
+          className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app p-1 rounded-md"
+          href="https://neon.tech"
+          rel="noopener"
+          target="_blank"
+        >
           <Icon name="Logo" />
         </a>
         <svg
@@ -43,7 +48,7 @@ export const Toolbar = () => {
             <button
               onClick={() => setLayout('horizontal')}
               className={cn(
-                'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
+                'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
                 layout === 'horizontal' &&
                   'text-gray-high-contrast hover:text-gray-high-contrast'
               )}
@@ -54,7 +59,7 @@ export const Toolbar = () => {
             <button
               onClick={() => setLayout('vertical')}
               className={cn(
-                'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
+                'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
                 layout === 'vertical' &&
                   'text-gray-high-contrast hover:text-gray-high-contrast'
               )}
@@ -65,7 +70,7 @@ export const Toolbar = () => {
             <button
               onClick={() => setShowResultPanel(!showResultPanel)}
               className={cn(
-                'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
+                'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
                 showResultPanel &&
                   'text-gray-high-contrast hover:text-gray-high-contrast'
               )}

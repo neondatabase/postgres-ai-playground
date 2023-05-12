@@ -62,7 +62,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           'rounded-md disabled:cursor-not-allowed disabled:opacity-50',
           'relative inline-flex select-none items-center justify-between leading-4',
           'transition-colors duration-150 ease-in-out',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
           className
         )}
       >

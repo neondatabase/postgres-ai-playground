@@ -36,7 +36,7 @@ export const Panels = () => {
           >
             <Sidebar />
           </Panel>
-          <PanelResizeHandle className="w-2 focus-visible:outline-none border-r border-r-gray-subtle focus-visible:border-r-2 focus-visible:border-r-gray-hover" />
+          <PanelResizeHandle className="w-2 focus-visible:outline-none border-r border-r-gray-subtle focus-visible:border-r-2 focus-visible:border-r-primary-hover" />
           <Panel defaultSize={88} minSize={50}>
             <PanelGroup direction={selectedLayout}>
               <Panel defaultSize={45} minSize={10}>
@@ -45,8 +45,8 @@ export const Panels = () => {
               <PanelResizeHandle
                 className={cn(
                   selectedLayout === 'horizontal'
-                    ? 'w-2 border-l border-l-gray-subtle focus-visible:border-l-2 focus-visible:border-l-gray-hover'
-                    : 'h-2 border-t border-t-gray-subtle w-full focus-visible:border-b-2 focus-visible:border-b-gray-hover',
+                    ? 'w-2 border-l border-l-gray-subtle focus-visible:border-l-2 focus-visible:border-l-primary-hover'
+                    : 'h-2 border-t border-t-gray-subtle w-full focus-visible:border-b-2 focus-visible:border-b-primary-hover',
                   'focus-visible:outline-none'
                 )}
               />
