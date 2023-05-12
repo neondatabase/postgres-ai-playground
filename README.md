@@ -11,3 +11,4 @@ Todo:
 - [ ] Display triggers for tables
 - [ ] display functions
 - [ ] Display procedures
+- [ ] Add copy button when showing the prompt answer
