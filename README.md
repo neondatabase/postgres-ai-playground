@@ -6,6 +6,7 @@ Todo:
 - [ ] Tweak the OpenAI prompt for a consistent output
 - [ ] Add copy button when showing the prompt answer
 - [ ] OG image
+- [ ] Favicon
 - [ ] Domain
 - [ ] production API key for OpenAI. Set a max budget
 - [ ] Set a max budget for Redis
