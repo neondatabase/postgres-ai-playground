@@ -86,11 +86,28 @@ export const CommandPalette = () => {
       <>
         <DialogTrigger asChild>
           <Button
-            className="relative"
+            className="relative group"
             appearance="outlined"
             leadingIcon={<Icon name="Sparkles" className="mr-1 h-4 w-4" />}
           >
             <span>Ask AI</span>
+            <span className="group-hover:text-gray-high-contrast hidden lg:inline-flex bg-element text-xs px-1.5 py-0.5 items-center ml-2 text-gray-base -mr-1 rounded ">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="align-middle"
+              >
+                <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
+              </svg>{' '}
+              + <span className="font-mono">k</span>
+            </span>
           </Button>
         </DialogTrigger>
       </>
