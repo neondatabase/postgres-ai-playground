@@ -29,7 +29,7 @@ export const CommandPalette = () => {
   );
   const [response, setResponse] = useAtom(responseAtom);
 
-  const { mutate } = useMutation(
+  const { mutate, isLoading } = useMutation(
     async ({ prompt }: FormValues) => {
       setResponse('');
       const response = await fetch('http://localhost:3000/api/chat', {
@@ -104,6 +104,7 @@ export const CommandPalette = () => {
         </DialogHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TextInput
+            disabled={isLoading}
             {...register('prompt', {
               required: true,
             })}

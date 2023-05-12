@@ -21,6 +21,8 @@
     "@tanstack/react-table": "^8.9.1",
     "@uiw/codemirror-theme-github": "^4.19.16",
     "@uiw/react-codemirror": "^4.19.16",
+    "@upstash/ratelimit": "^0.4.3",
+    "@upstash/redis": "^1.20.6",
     "@vercel/analytics": "^1.0.1",
     "clsx": "^1.2.1",
     "eventsource-parser": "^1.0.0",
