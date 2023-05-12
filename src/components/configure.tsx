@@ -76,7 +76,7 @@ export const ConfigurationDialog = () => {
           <DialogTitle>Configure</DialogTitle>
 
           <DialogDescription>
-            Configure your database connection and OpenAI API key
+            Configure your Neon database connection
           </DialogDescription>
         </DialogHeader>
 
