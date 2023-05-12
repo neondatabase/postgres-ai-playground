@@ -34,13 +34,11 @@ export const ConfigurationDialog = () => {
   const { mutate, isLoading } = useMutation(
     async (data: FormValues) => {
       const res = await connect(data);
-      console.log(res);
       return res;
     },
     {
       onSuccess: (data) => {
         toast.success('Configuration saved successfully');
-        console.log(data);
         setConnectionString(data.connectionString);
         setHasConfiguredDatabase(true);
         setIsOpen(false);

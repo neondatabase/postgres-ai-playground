@@ -24,6 +24,7 @@ export const queryResultAtom = atom<
       rows: any[];
       rowCount: number;
       columns: string[];
+      startTime: Date;
     }
   | undefined
 >(undefined);
@@ -31,4 +32,12 @@ export const queryResultAtom = atom<
 export const hasConfiguredDatabaseAtom = atomWithStorage<boolean>(
   'hasConfiguredDatabase',
   false
+);
+
+// AI
+export const showCommandPaletteAtom = atom<boolean>(false);
+
+export const responseAtom = atomWithStorage<string | undefined>(
+  'response',
+  undefined
 );

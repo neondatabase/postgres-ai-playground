@@ -40,6 +40,7 @@ import {
   Columns,
   CornerRightUp,
   Table as Tables,
+  Sparkles,
 } from 'lucide-react';
 import { forwardRef } from 'react';
 
@@ -112,6 +113,7 @@ export enum IconsList {
   Views,
   Tables,
   CornerRightUp,
+  Sparkles,
 }
 
 const icons: Record<keyof typeof IconsList, IconType> = {
@@ -156,6 +158,7 @@ const icons: Record<keyof typeof IconsList, IconType> = {
   Tables: Tables,
   Views: Tables,
   CornerRightUp: CornerRightUp,
+  Sparkles: Sparkles,
 };
 
 interface IconProps {

@@ -4,14 +4,15 @@ import { sql, PostgreSQL } from '@codemirror/lang-sql';
 import { githubLight, githubDark } from '@uiw/codemirror-theme-github';
 import { keymap } from '@codemirror/view';
 import { defaultKeymap } from '@codemirror/commands';
+import { EditorView } from '@codemirror/view';
 import {
   connectionStringAtom,
   queryAtom,
   queryResultAtom,
+  showCommandPaletteAtom,
 } from '@/utils/atoms';
 import { useAtom } from 'jotai';
 import { Button } from './shared/button';
-import { useHotkeys } from 'react-hotkeys-hook';
 import { runQuery } from '@/utils/query';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useTheme } from 'next-themes';
@@ -22,13 +23,16 @@ export const Editor = () => {
   const { resolvedTheme } = useTheme();
   const [connectionString] = useAtom(connectionStringAtom);
   const [queryResult, setQueryResult] = useAtom(queryResultAtom);
+  const [showCommandPalette, setShowCommandPalette] = useAtom(
+    showCommandPaletteAtom
+  );
+
   const queryClient = useQueryClient();
 
   const { mutate, isLoading } = useMutation(
     async (query: string) => await runQuery({ query, connectionString }),
     {
       onSuccess: (data) => {
-        console.log(data);
         setQueryResult(data);
         queryClient.invalidateQueries({ queryKey: ['schema'] });
       },
@@ -38,10 +42,10 @@ export const Editor = () => {
     }
   );
 
-  useHotkeys('meta+enter', () => {
+  const executeQuery = () => {
     if (query.trimEnd() === '') return;
     mutate(query);
-  });
+  };
 
   const [query, setQuery] = useAtom(queryAtom);
 
@@ -49,7 +53,6 @@ export const Editor = () => {
     <>
       <CodeMirror
         theme={resolvedTheme === 'dark' ? githubDark : githubLight}
-        suppressHydrationWarning
         value={query}
         basicSetup={{
           defaultKeymap: false,
@@ -57,12 +60,20 @@ export const Editor = () => {
         placeholder="Write your query here..."
         onChange={(value) => setQuery(value)}
         extensions={[
+          EditorView.lineWrapping,
           keymap.of([
             {
               key: 'Mod-Enter',
               run: () => {
-                if (query.trimEnd() === '') return false;
-                mutate(query);
+                executeQuery();
+                return true;
+              },
+              ...defaultKeymap,
+            },
+            {
+              key: 'Mod-k',
+              run: () => {
+                setShowCommandPalette(true);
                 return true;
               },
               ...defaultKeymap,

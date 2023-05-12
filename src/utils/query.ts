@@ -7,6 +7,8 @@ type queryOptions = {
 
 export const runQuery = async ({ connectionString, query }: queryOptions) => {
   try {
+    let startTime = Date.now();
+
     const client = new Pool({
       connectionString,
     });
@@ -15,7 +17,16 @@ export const runQuery = async ({ connectionString, query }: queryOptions) => {
 
     client.end();
 
-    return { rows, rowCount, columns: fields.map((field) => field.name) };
+    // get query execution time
+
+    startTime = Date.now();
+
+    return {
+      rows,
+      rowCount,
+      columns: fields.map((field) => field.name),
+      startTime,
+    };
   } catch (error) {
     console.log('error', error);
     throw new Error(error);

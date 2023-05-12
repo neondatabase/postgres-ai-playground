@@ -15,7 +15,7 @@ export const ThemeSelect = () => {
   return (
     <div>
       <Select value={theme} onValueChange={setTheme}>
-        <SelectTrigger className="w-[140px]">
+        <SelectTrigger className="w-[200px]">
           <SelectValue placeholder="Theme" />
         </SelectTrigger>
         <SelectContent>

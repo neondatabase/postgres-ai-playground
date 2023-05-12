@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Icon } from './shared/icon';
 import {
   Table,
@@ -40,7 +40,7 @@ export const Results = () => {
   return (
     <>
       {queryResult ? (
-        <div className="m-3 inline-block  py-2 align-middle">
+        <div className="mx-3 inline-block  py-2 align-middle">
           <div className="flex flex-1 flex-col items-center justify-center space-y-3">
             <Table>
               <TableHeader>
@@ -84,7 +84,7 @@ export const Results = () => {
           </div>
           {table.getRowModel().rows?.length > 0 && (
             <nav
-              className="flex items-center justify-between px-4 py-3 sm:px-6"
+              className="flex items-center justify-between py-3"
               aria-label="Pagination"
             >
               <div className="hidden sm:block">
@@ -101,7 +101,7 @@ export const Results = () => {
                   </span>{' '}
                   out of{' '}
                   <span className="font-medium">{queryResult.rowCount}</span>{' '}
-                  results
+                  results.
                 </p>
               </div>
               <div className="flex flex-1 space-x-2 justify-between sm:justify-end">

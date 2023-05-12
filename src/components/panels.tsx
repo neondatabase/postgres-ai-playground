@@ -4,6 +4,7 @@ import { useAtom } from 'jotai';
 import { cn } from '@/utils/cn';
 import {
   hasConfiguredDatabaseAtom,
+  queryResultAtom,
   selectedLayoutAtom,
   showResultPanelAtom,
 } from '@/utils/atoms';
@@ -15,6 +16,10 @@ export const Panels = () => {
   const [selectedLayout] = useAtom(selectedLayoutAtom);
   const [showResultPanel] = useAtom(showResultPanelAtom);
   const [hasConfiguredDatabase] = useAtom(hasConfiguredDatabaseAtom);
+  const [queryResult] = useAtom(queryResultAtom);
+
+  const duration = queryResult && Date.now() - queryResult?.startTime;
+
   return (
     <div className="relative">
       {!hasConfiguredDatabase && (
@@ -53,6 +58,9 @@ export const Panels = () => {
                     selectedLayout === 'horizontal' ? 'h-full' : 'h-full'
                   )}
                 >
+                  {queryResult && (
+                    <p className="mx-3 mt-3">Ran in {duration}ms</p>
+                  )}
                   <Results />
                 </Panel>
               )}
