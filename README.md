@@ -12,3 +12,5 @@ Todo:
 - [ ] display functions
 - [ ] Display procedures
 - [ ] Add copy button when showing the prompt answer
+- [ ] Add a refresh button for manually updating the schema
+- [ ] Add shortcut to the run and ask AI buttons
