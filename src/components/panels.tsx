@@ -11,6 +11,7 @@ import {
 import { Results } from './results';
 import { Sidebar } from './sidebar';
 import { Editor } from './editor';
+import { Banner } from './banner';
 
 export const Panels = () => {
   const [selectedLayout] = useAtom(selectedLayoutAtom);
@@ -23,7 +24,10 @@ export const Panels = () => {
   return (
     <div className="relative">
       {!hasConfiguredDatabase && (
-        <div className="fixed backdrop-blur-[2px] z-10 left-0 top-0 w-full h-full" />
+        <>
+          <Banner />
+          <div className="fixed backdrop-blur-[2px] z-10 left-0 top-0 w-full h-full" />
+        </>
       )}
 
       <div className={cn('h-[92vh]')}>
