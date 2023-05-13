@@ -1,6 +1,10 @@
 'use client';
 import { useAtom } from 'jotai';
-import { selectedLayoutAtom, showResultPanelAtom } from '@/utils/atoms';
+import {
+  hasConfiguredDatabaseAtom,
+  selectedLayoutAtom,
+  showResultPanelAtom,
+} from '@/utils/atoms';
 import { Icon } from './shared/icon';
 import { cn } from '@/utils/cn';
 import { ConfigurationDialog } from './configure';
@@ -10,6 +14,7 @@ import { CommandPalette } from './command-palette';
 export const Toolbar = () => {
   const [layout, setLayout] = useAtom(selectedLayoutAtom);
   const [showResultPanel, setShowResultPanel] = useAtom(showResultPanelAtom);
+  const [hasConfiguredDatabase] = useAtom(hasConfiguredDatabaseAtom);
 
   return (
     <div className="sticky top-0 z-30 px-4 lg:px-6 flex items-center justify-between py-4 border-b border-b-gray-subtle bg-app">
@@ -46,9 +51,10 @@ export const Toolbar = () => {
           <ThemeSelect />
           <div className="flex items-center justify-center space-x-5 rounded-md border border-gray-primary px-4 py-2">
             <button
+              disabled={!hasConfiguredDatabase}
               onClick={() => setLayout('horizontal')}
               className={cn(
-                'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
+                'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app disabled:cursor-not-allowed disabled:opacity-50',
                 layout === 'horizontal' &&
                   'text-gray-high-contrast hover:text-gray-high-contrast'
               )}
@@ -57,9 +63,10 @@ export const Toolbar = () => {
             </button>
 
             <button
+              disabled={!hasConfiguredDatabase}
               onClick={() => setLayout('vertical')}
               className={cn(
-                'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
+                'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app disabled:cursor-not-allowed disabled:opacity-50',
                 layout === 'vertical' &&
                   'text-gray-high-contrast hover:text-gray-high-contrast'
               )}
@@ -68,9 +75,10 @@ export const Toolbar = () => {
             </button>
 
             <button
+              disabled={!hasConfiguredDatabase}
               onClick={() => setShowResultPanel(!showResultPanel)}
               className={cn(
-                'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
+                'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app disabled:cursor-not-allowed disabled:opacity-50',
                 showResultPanel &&
                   'text-gray-high-contrast hover:text-gray-high-contrast'
               )}
