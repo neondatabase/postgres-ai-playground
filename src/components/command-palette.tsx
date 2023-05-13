@@ -17,6 +17,8 @@ import React from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 import { useHotkeys } from 'react-hotkeys-hook';
+import useClipboard from 'react-use-clipboard';
+import { cn } from '@/utils/cn';
 
 type FormValues = {
   prompt: string;
@@ -81,6 +83,10 @@ export const CommandPalette = () => {
     setShowCommandPalette(true);
   });
 
+  const [isCopied, setCopied] = useClipboard(response!, {
+    successDuration: 1000,
+  });
+
   return (
     <Dialog open={showCommandPalette} onOpenChange={setShowCommandPalette}>
       <>
@@ -133,12 +139,43 @@ export const CommandPalette = () => {
         </form>
 
         {response && (
-          <div
-            className="prose-sm rounded-md bg-app-subtle p-5"
-            dangerouslySetInnerHTML={{
-              __html: response,
-            }}
-          />
+          <>
+            <div
+              className="prose-sm rounded-md bg-app-subtle p-5"
+              dangerouslySetInnerHTML={{
+                __html: response,
+              }}
+            />
+
+            <button
+              type="button"
+              className={cn(
+                'ml-auto overflow-hidden rounded-full py-1 pl-2 pr-3 text-xs font-medium backdrop-blur transition hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
+                isCopied ? '' : ''
+              )}
+              onClick={setCopied}
+            >
+              <span
+                aria-hidden={isCopied}
+                className={cn(
+                  'pointer-events-none flex items-center gap-1 transition duration-300',
+                  isCopied && '-translate-y-1.5 opacity-0'
+                )}
+              >
+                <Icon name="Copy" className="h-4 w-4 transition-colors" />
+                Copy
+              </span>
+              <span
+                aria-hidden={!isCopied}
+                className={cn(
+                  'pointer-events-none absolute inset-0 flex items-center justify-center transition duration-300',
+                  !isCopied && 'translate-y-1.5 opacity-0'
+                )}
+              >
+                Copied!
+              </span>
+            </button>
+          </>
         )}
       </DialogContent>
     </Dialog>
