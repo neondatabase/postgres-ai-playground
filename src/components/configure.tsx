@@ -17,6 +17,7 @@ import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { connect } from '@/utils/connect';
 import { toast } from 'react-hot-toast';
+import { maskPassword } from '@/utils/mask-password';
 
 type FormValues = {
   apiKey: string;
@@ -90,11 +91,28 @@ export const ConfigurationDialog = () => {
               id="connectionString"
               name="connectionString"
               type="text"
-              placeholder={connectionString ?? 'Connection String'}
+              placeholder={
+                connectionString
+                  ? maskPassword(connectionString)
+                  : 'postgres://daniel:<password>@ep-mute-rain-952417.us-east-2.aws.neon.tech/neondb'
+              }
             />
           </div>
-          <div className="mt-8 flex justify-end">
-            <Button loading={isLoading} type="submit" size="large">
+          <div className="flex justify-end space-x-5 mt-8">
+            {connectionString && (
+              <Button
+                onClick={() => {
+                  setConnectionString('');
+                  setHasConfiguredDatabase(false);
+                  setIsOpen(false);
+                }}
+                type="submit"
+                appearance="danger"
+              >
+                Remove connection
+              </Button>
+            )}
+            <Button loading={isLoading} type="submit">
               Save
             </Button>
           </div>
