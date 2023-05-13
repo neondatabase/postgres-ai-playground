@@ -14,7 +14,26 @@ export default function Providers({ children }: ProvidersProps) {
     <ThemeProvider attribute="data-theme">
       <QueryClientProvider client={queryClient}>
         <Analytics />
-        <Toaster />
+        <Toaster
+          containerStyle={{}}
+          position="bottom-right"
+          toastOptions={{
+            success: {
+              style: {
+                color: 'var(--color-text-gray-base)',
+                backgroundColor: 'var(--color-bg-element)',
+              },
+              duration: 4000,
+            },
+            error: {
+              style: {
+                color: 'var(--color-text-gray-base)',
+                backgroundColor: 'var(--color-bg-element)',
+              },
+              duration: 4000,
+            },
+          }}
+        />
         {children}
       </QueryClientProvider>
     </ThemeProvider>
