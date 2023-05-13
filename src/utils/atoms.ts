@@ -34,6 +34,8 @@ export const hasConfiguredDatabaseAtom = atomWithStorage<boolean>(
   false
 );
 
+export const schemaAtom = atom<string[] | undefined>(undefined);
+
 // AI
 export const showCommandPaletteAtom = atom<boolean>(false);
 
