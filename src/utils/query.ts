@@ -29,6 +29,7 @@ export const runQuery = async ({ connectionString, query }: queryOptions) => {
     };
   } catch (error) {
     console.log('error', error);
+    // @ts-ignore
     throw new Error(error);
   }
 };

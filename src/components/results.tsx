@@ -23,7 +23,9 @@ export const Results = () => {
   const [queryResult] = useAtom(queryResultAtom);
 
   const table = useReactTable({
+    // @ts-ignore
     data: queryResult && queryResult.rows,
+    // @ts-ignore
     columns:
       queryResult &&
       queryResult.columns.map((key) => {

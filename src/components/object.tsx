@@ -6,6 +6,7 @@ import {
 } from './shared/accordion';
 import { Icon } from './shared/icon';
 
+// @ts-ignore
 export const Object = ({ name, data }) => {
   return (
     <Accordion className="text-sm" type="multiple">
@@ -15,66 +16,77 @@ export const Object = ({ name, data }) => {
           <span className="ml-2 text-xs">{data.length}</span>
         </AccordionTrigger>
         <AccordionContent className="ml-3">
-          {data.map((item) => (
-            <Accordion key={item.table_name} type="multiple">
-              <AccordionItem value={item.table_name}>
-                <AccordionTrigger className="my-1.5">
-                  {item.table_name}
-                </AccordionTrigger>
-                <AccordionContent>
-                  <Accordion type="multiple">
-                    <AccordionItem value="columns">
-                      <AccordionTrigger className="relative my-1.5 ml-6">
-                        Columns
-                        <span className="ml-2 text-xs">
-                          {item.columns.length}
-                        </span>
-                      </AccordionTrigger>
-                      <AccordionContent className="ml-12">
-                        <div className="mb-3 space-y-4">
-                          {item.columns.map((column) => (
-                            <div
-                              key={column.column_name}
-                              className="flex items-center space-x-3"
-                            >
-                              <span className="flex-1">
-                                {column.column_name}
-                              </span>
+          {
+            // @ts-ignore
+            data.map((item) => (
+              <Accordion key={item.table_name} type="multiple">
+                <AccordionItem value={item.table_name}>
+                  <AccordionTrigger className="my-1.5">
+                    {item.table_name}
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <Accordion type="multiple">
+                      <AccordionItem value="columns">
+                        <AccordionTrigger className="relative my-1.5 ml-6">
+                          Columns
+                          <span className="ml-2 text-xs">
+                            {item.columns.length}
+                          </span>
+                        </AccordionTrigger>
+                        <AccordionContent className="ml-12">
+                          <div className="mb-3 space-y-4">
+                            {
+                              // @ts-ignore
+                              item.columns.map((column) => (
+                                <div
+                                  key={column.column_name}
+                                  className="flex items-center space-x-3"
+                                >
+                                  <span className="flex-1">
+                                    {column.column_name}
+                                  </span>
 
-                              <span className="text-xs inline-flex items-center whitespace-nowrap rounded-full bg-element px-2.5 py-0.5">
-                                {column.data_type}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
+                                  <span className="text-xs inline-flex items-center whitespace-nowrap rounded-full bg-element px-2.5 py-0.5">
+                                    {column.data_type}
+                                  </span>
+                                </div>
+                              ))
+                            }
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
 
-                    <AccordionItem value="indexes">
-                      <AccordionTrigger className="mb-3 ml-6">
-                        Indexes{' '}
-                        <span className="ml-2 text-xs">
-                          {item.indexes.length}
-                        </span>
-                      </AccordionTrigger>
-                      <AccordionContent className="ml-12">
-                        <div className="mb-3 space-y-3">
-                          {item.indexes.map((index) => (
-                            <div
-                              key={index.index_name}
-                              className="flex space-x-3"
-                            >
-                              <span className="flex-1">{index.indexname}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          ))}
+                      <AccordionItem value="indexes">
+                        <AccordionTrigger className="mb-3 ml-6">
+                          Indexes{' '}
+                          <span className="ml-2 text-xs">
+                            {item.indexes.length}
+                          </span>
+                        </AccordionTrigger>
+                        <AccordionContent className="ml-12">
+                          <div className="mb-3 space-y-3">
+                            {
+                              // @ts-ignore
+                              item.indexes.map((index) => (
+                                <div
+                                  key={index.index_name}
+                                  className="flex space-x-3"
+                                >
+                                  <span className="flex-1">
+                                    {index.indexname}
+                                  </span>
+                                </div>
+                              ))
+                            }
+                          </div>
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            ))
+          }
         </AccordionContent>
       </AccordionItem>
     </Accordion>

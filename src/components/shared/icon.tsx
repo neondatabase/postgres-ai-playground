@@ -171,6 +171,6 @@ export const Icon = forwardRef(function Icn(
   ref
 ) {
   const Component = icons[name];
-
+  // @ts-ignore
   return <Component ref={ref} className={className} />;
 });

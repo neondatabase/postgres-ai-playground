@@ -19,6 +19,7 @@ export const Panels = () => {
   const [hasConfiguredDatabase] = useAtom(hasConfiguredDatabaseAtom);
   const [queryResult] = useAtom(queryResultAtom);
 
+  // @ts-ignore
   const duration = queryResult && Date.now() - queryResult?.startTime;
 
   return (
