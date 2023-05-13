@@ -34,9 +34,7 @@ export async function POST(req: NextRequest): Promise<Response> {
       },
       {
         role: 'user',
-        content: `${prompt} 
-        
-        format your response as SQL code where the explanation is the comment. Display the code on a new line. Reply in 200 characters or less.
+        content: `--${prompt}\n prefix the response with -- unless it is SQL code
       `,
       },
     ],
