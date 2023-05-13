@@ -12,7 +12,7 @@ import { Icon } from './shared/icon';
 import { useForm } from 'react-hook-form';
 import { TextInput } from './shared/text-input';
 import { useAtom } from 'jotai';
-import { responseAtom, showCommandPaletteAtom } from '@/utils/atoms';
+import { queryAtom, responseAtom, showCommandPaletteAtom } from '@/utils/atoms';
 import React from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
@@ -22,6 +22,7 @@ import { EditorView } from '@codemirror/view';
 import { PostgreSQL, sql } from '@codemirror/lang-sql';
 import { useTheme } from 'next-themes';
 import { githubDark, githubLight } from '@uiw/codemirror-theme-github';
+import { cn } from '@/utils/cn';
 
 type FormValues = {
   prompt: string;
@@ -29,20 +30,20 @@ type FormValues = {
 
 export const CommandPalette = () => {
   const { register, handleSubmit } = useForm<FormValues>();
-  const [showCommandPalette, setShowCommandPalette] = useAtom(
-    showCommandPaletteAtom
-  );
+  const [isOpen, setIsOpen] = useAtom(showCommandPaletteAtom);
   const [response, setResponse] = useAtom(responseAtom);
+  const [query, setQuery] = useAtom(queryAtom);
   const { resolvedTheme } = useTheme();
 
   useHotkeys('meta+k', () => {
-    setShowCommandPalette(true);
+    setIsOpen(true);
   });
 
   const { mutate, isLoading } = useMutation(
     async ({ prompt }: FormValues) => {
       setResponse('');
-      const response = await fetch(`${process.env.APP_URL}/api/chat`, {
+
+      const response = await fetch(`http://localhost:3000/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,8 +76,6 @@ export const CommandPalette = () => {
       }
     },
     {
-      onSuccess: (data) => {},
-
       onError: (error) => {
         toast.error(`Something went wrong: ${error}`);
       },
@@ -88,7 +87,7 @@ export const CommandPalette = () => {
   };
 
   return (
-    <Dialog open={showCommandPalette} onOpenChange={setShowCommandPalette}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <>
         <DialogTrigger asChild>
           <Button
@@ -155,10 +154,30 @@ export const CommandPalette = () => {
                 }),
               ]}
               editable={false}
-              className="prose-sm rounded-md editor"
+              className="prose-sm rounded-md editor border-gray-subtle border"
               value={response}
             />
-            <CopyButton text={response} />
+            <div className="flex justify-end space-x-2">
+              <CopyButton text={response} />
+              <button
+                type="button"
+                className={cn(
+                  'overflow-hidden rounded-full py-1 pl-2 pr-3 text-xs font-medium backdrop-blur transition hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app'
+                )}
+                onClick={() => {
+                  setQuery(query + response);
+                  setIsOpen(false);
+                }}
+              >
+                <span
+                  className={cn(
+                    'pointer-events-none flex items-center gap-1 transition duration-300'
+                  )}
+                >
+                  insert code &crarr;
+                </span>
+              </button>
+            </div>
           </>
         )}
       </DialogContent>
