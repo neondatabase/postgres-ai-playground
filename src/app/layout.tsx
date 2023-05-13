@@ -9,6 +9,7 @@ export const metadata = {
   title: 'Postgres AI Playground',
   description:
     'Postgres playground where you can connect to your database and use AI to generate SQL queries',
+  image: '/images/og.png',
 };
 
 export default function RootLayout({
