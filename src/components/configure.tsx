@@ -7,7 +7,6 @@ import {
   DialogTrigger,
 } from '@/components/shared/dialog';
 import { Button } from './shared/button';
-import { Icon } from './shared/icon';
 import { useForm } from 'react-hook-form';
 import { TextInput } from './shared/text-input';
 import { Label } from './shared/label';
