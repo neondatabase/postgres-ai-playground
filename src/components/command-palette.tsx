@@ -17,6 +17,11 @@ import React from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 import { useHotkeys } from 'react-hotkeys-hook';
+import CodeMirror from '@uiw/react-codemirror';
+import { EditorView } from '@codemirror/view';
+import { PostgreSQL, sql } from '@codemirror/lang-sql';
+import { useTheme } from 'next-themes';
+import { githubDark, githubLight } from '@uiw/codemirror-theme-github';
 
 type FormValues = {
   prompt: string;
@@ -28,6 +33,7 @@ export const CommandPalette = () => {
     showCommandPaletteAtom
   );
   const [response, setResponse] = useAtom(responseAtom);
+  const { resolvedTheme } = useTheme();
 
   useHotkeys('meta+k', () => {
     setShowCommandPalette(true);
@@ -36,7 +42,7 @@ export const CommandPalette = () => {
   const { mutate, isLoading } = useMutation(
     async ({ prompt }: FormValues) => {
       setResponse('');
-      const response = await fetch('http://localhost:3000/api/chat', {
+      const response = await fetch(`${process.env.APP_URL}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -134,11 +140,23 @@ export const CommandPalette = () => {
 
         {response && (
           <>
-            <div
-              className="prose-sm rounded-md bg-app-subtle p-5"
-              dangerouslySetInnerHTML={{
-                __html: response,
+            <CodeMirror
+              basicSetup={{
+                lineNumbers: false,
+                foldGutter: false,
+                highlightActiveLine: false,
               }}
+              theme={resolvedTheme === 'dark' ? githubDark : githubLight}
+              extensions={[
+                EditorView.lineWrapping,
+                sql({
+                  dialect: PostgreSQL,
+                  upperCaseKeywords: true,
+                }),
+              ]}
+              editable={false}
+              className="prose-sm rounded-md editor"
+              value={response}
             />
             <CopyButton text={response} />
           </>
