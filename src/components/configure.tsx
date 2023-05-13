@@ -57,24 +57,20 @@ export const ConfigurationDialog = () => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <>
         <DialogTrigger asChild>
-          <Button
-            className="relative"
-            appearance="outlined"
-            leadingIcon={<Icon name="Settings" className="mr-1 h-4 w-4" />}
-          >
+          <Button className="relative" appearance="outlined">
             {!hasConfiguredDatabase && (
               <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-solid opacity-75"></span>
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-solid-hover"></span>
               </span>
             )}
-            <span>Configure</span>
+            <span>Connect</span>
           </Button>
         </DialogTrigger>
       </>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Configure</DialogTitle>
+          <DialogTitle>Connect</DialogTitle>
 
           <DialogDescription>
             Configure your Neon database connection
