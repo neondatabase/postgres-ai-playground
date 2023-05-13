@@ -5,3 +5,7 @@
 .ͼ2 .cm-gutters {
   @apply border-transparent;
 }
+
+.editor .cm-editor {
+  @apply rounded-md p-5;
+}
