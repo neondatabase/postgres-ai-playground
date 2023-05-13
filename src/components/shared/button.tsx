@@ -2,6 +2,8 @@
 import { cn } from '@/utils/cn';
 import * as React from 'react';
 import type { HTMLAttributes } from 'react';
+import useClipboard from 'react-use-clipboard';
+import { Icon } from './icon';
 
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
@@ -73,3 +75,40 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
+
+export const CopyButton = ({ text }: { text: string }) => {
+  const [isCopied, setCopied] = useClipboard(text, {
+    successDuration: 1000,
+  });
+
+  return (
+    <button
+      type="button"
+      className={cn(
+        'ml-auto overflow-hidden rounded-full py-1 pl-2 pr-3 text-xs font-medium backdrop-blur transition hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
+        isCopied ? '' : ''
+      )}
+      onClick={setCopied}
+    >
+      <span
+        aria-hidden={isCopied}
+        className={cn(
+          'pointer-events-none flex items-center gap-1 transition duration-300',
+          isCopied && '-translate-y-1.5 opacity-0'
+        )}
+      >
+        <Icon name="Copy" className="h-4 w-4 transition-colors" />
+        Copy
+      </span>
+      <span
+        aria-hidden={!isCopied}
+        className={cn(
+          'pointer-events-none absolute inset-0 flex items-center justify-center transition duration-300',
+          !isCopied && 'translate-y-1.5 opacity-0'
+        )}
+      >
+        Copied!
+      </span>
+    </button>
+  );
+};
