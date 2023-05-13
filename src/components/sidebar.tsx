@@ -10,13 +10,12 @@ export const Sidebar = () => {
   const [connectionString] = useAtom(connectionStringAtom);
   const [hasConfiguredDatabase] = useAtom(hasConfiguredDatabaseAtom);
 
-  const { data, isLoading, error } = useQuery(
+  const { data, isLoading } = useQuery(
     ['schema'],
     async () => {
       const res = await connect({
         connectionString: connectionString,
       });
-
       return res;
     },
     {
@@ -29,10 +28,19 @@ export const Sidebar = () => {
 
   return (
     <div className="flex flex-1 flex-col space-y-2 overflow-y-auto px-3 py-5">
-      {data && (
+      {isLoading ? (
+        <div className="space-y-5">
+          <div className="bg-element-active animate-pulse w-28 h-4 my-1.5 rounded-md"></div>
+          <div className="bg-element-active animate-pulse w-28 h-4 my-1.5 rounded-md"></div>
+        </div>
+      ) : (
         <>
-          <Object name="Tables" data={data.tables} />
-          <Object name="Views" data={data.views} />
+          {data && (
+            <>
+              <Object name="Tables" data={data.tables} />
+              <Object name="Views" data={data.views} />
+            </>
+          )}
         </>
       )}
     </div>
