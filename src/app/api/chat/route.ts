@@ -27,7 +27,19 @@ export async function POST(req: NextRequest): Promise<Response> {
 
   const payload: OpenAIStreamPayload = {
     model: 'gpt-3.5-turbo',
-    messages: [{ role: 'user', content: prompt }],
+    messages: [
+      {
+        role: 'system',
+        content: `you are an AI assistant that only knows about PostgreSQL. All of your responses will be about Postgres, if asked about any other database say you do not know`,
+      },
+      {
+        role: 'user',
+        content: `${prompt} 
+        
+        format your response as SQL code where the explanation is the comment. Display the code on a new line. Reply in 200 characters or less.
+      `,
+      },
+    ],
     temperature: 0.7,
     top_p: 1,
     frequency_penalty: 0,

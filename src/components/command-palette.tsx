@@ -42,7 +42,7 @@ export const CommandPalette = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          prompt: `Format the response \n\nQ: ${prompt}\n A:`,
+          prompt,
         }),
       });
 
