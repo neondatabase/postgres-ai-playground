@@ -59,7 +59,7 @@ export const Panels = () => {
                   )}
                 >
                   {queryResult && (
-                    <p className="mx-3 mt-3">Ran in {duration}ms</p>
+                    <p className="mx-3 mt-3 text-sm">Ran in {duration}ms</p>
                   )}
                   <Results />
                 </Panel>
