@@ -12,6 +12,21 @@ export const showResultPanelAtom = atomWithStorage<boolean>(
   true
 );
 
+// Editor
+
+export const editorSchemaAtom = atom<
+  | {
+      schema: any;
+      tables: {
+        label: any;
+      }[];
+    }
+  | undefined
+>({
+  schema: {},
+  tables: [],
+});
+
 // Database
 export const connectionStringAtom = atomWithStorage<string | undefined>(
   'connectionString',

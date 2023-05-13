@@ -7,6 +7,7 @@ import { defaultKeymap } from '@codemirror/commands';
 import { EditorView } from '@codemirror/view';
 import {
   connectionStringAtom,
+  editorSchemaAtom,
   queryAtom,
   queryResultAtom,
   showCommandPaletteAtom,
@@ -26,13 +27,15 @@ export const Editor = () => {
   const [showCommandPalette, setShowCommandPalette] = useAtom(
     showCommandPaletteAtom
   );
-
+  const [editorSchema] = useAtom(editorSchemaAtom);
   const queryClient = useQueryClient();
 
   const { mutate, isLoading } = useMutation(
+    // @ts-ignore
     async (query: string) => await runQuery({ query, connectionString }),
     {
       onSuccess: (data) => {
+        // @ts-ignore
         setQueryResult(data);
         queryClient.invalidateQueries({ queryKey: ['schema'] });
       },
@@ -82,6 +85,8 @@ export const Editor = () => {
           sql({
             dialect: PostgreSQL,
             upperCaseKeywords: true,
+            schema: editorSchema?.schema,
+            tables: editorSchema?.tables,
           }),
         ]}
         height="92vh"

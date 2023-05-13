@@ -1,4 +1,8 @@
-import { connectionStringAtom, hasConfiguredDatabaseAtom } from '@/utils/atoms';
+import {
+  connectionStringAtom,
+  editorSchemaAtom,
+  hasConfiguredDatabaseAtom,
+} from '@/utils/atoms';
 import { connect } from '@/utils/connect';
 import { useQuery } from '@tanstack/react-query';
 import { useAtom } from 'jotai';
@@ -9,17 +13,21 @@ import { Object } from './object';
 export const Sidebar = () => {
   const [connectionString] = useAtom(connectionStringAtom);
   const [hasConfiguredDatabase] = useAtom(hasConfiguredDatabaseAtom);
-
+  const [editorSchema, setEditorSchema] = useAtom(editorSchemaAtom);
   const { data, isLoading } = useQuery(
     ['schema'],
     async () => {
       const res = await connect({
+        // @ts-ignore
         connectionString: connectionString,
       });
       return res;
     },
     {
       enabled: hasConfiguredDatabase,
+      onSuccess: () => {
+        setEditorSchema(data?.editorSchema);
+      },
       onError: (error) => {
         toast.error(`Error saving configuration: ${error}`);
       },

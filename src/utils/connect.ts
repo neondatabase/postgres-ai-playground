@@ -64,7 +64,21 @@ export const connect = async ({
 
     client.end();
 
+    const editorSchema = {
+      schema: tables.reduce((acc, table) => {
+        acc[table.table_name] = table.columns.map(
+          // @ts-ignore
+          (column) => column.column_name
+        );
+        return acc;
+      }, {}),
+      tables: tables.map((table) => ({
+        label: table.table_name,
+      })),
+    };
+
     return {
+      editorSchema,
       tables,
       views,
       databaseName,
@@ -72,6 +86,7 @@ export const connect = async ({
     };
   } catch (error) {
     console.log('error', error);
+    // @ts-ignore
     throw new Error(error);
   }
 };
