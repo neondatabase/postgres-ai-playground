@@ -17,8 +17,6 @@ import React from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 import { useHotkeys } from 'react-hotkeys-hook';
-import useClipboard from 'react-use-clipboard';
-import { cn } from '@/utils/cn';
 
 type FormValues = {
   prompt: string;
