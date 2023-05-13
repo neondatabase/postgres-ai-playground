@@ -17,7 +17,10 @@ export const Banner = () => {
           <br />
           <br />
           If you don&apos;t have a Neon database, you can{' '}
-          <a href="" className="text-green-base font-semibold hover:underline">
+          <a
+            href="https://console.neon.tech"
+            className="text-green-base font-semibold hover:underline"
+          >
             {' '}
             create one for free
           </a>
