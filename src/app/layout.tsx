@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     images: ['/images/og.png'],
+    url: 'https://postgres-ai-playground.vercel.app/',
+    title: 'Postgres AI Playground',
+    description:
+      'Postgres playground where you can connect to your database and use AI to generate SQL queries',
   },
   twitter: {
     card: 'summary_large_image',
@@ -28,7 +32,9 @@ export const metadata: Metadata = {
     description:
       'Postgres playground where you can connect to your database and use AI to generate SQL queries',
     images: ['/images/og.png'],
-    creator: '@neondatabase',
+    creator: 'Neon.tech',
+    creatorId: '@neondatabase',
+    site: 'https://postgres-ai-playground.vercel.app/',
   },
 };
 
