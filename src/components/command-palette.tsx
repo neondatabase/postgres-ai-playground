@@ -145,7 +145,7 @@ export const CommandPalette = () => {
             id="prompt"
             name="prompt"
             type="text"
-            placeholder={'your question...'}
+            placeholder={'create a user table'}
           />
         </form>
 

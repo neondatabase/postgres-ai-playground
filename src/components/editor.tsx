@@ -27,6 +27,7 @@ export const Editor = () => {
   const [showCommandPalette, setShowCommandPalette] = useAtom(
     showCommandPaletteAtom
   );
+  const [hasConfiguredDatabase] = useAtom(connectionStringAtom);
   const [editorSchema] = useAtom(editorSchemaAtom);
   const queryClient = useQueryClient();
 
@@ -76,7 +77,9 @@ export const Editor = () => {
             {
               key: 'Mod-k',
               run: () => {
-                setShowCommandPalette(true);
+                if (hasConfiguredDatabase) {
+                  setShowCommandPalette(true);
+                }
                 return true;
               },
               ...defaultKeymap,
@@ -97,7 +100,7 @@ export const Editor = () => {
             mutate(query);
           }}
           loading={isLoading}
-          disabled={query.trimEnd() === ''}
+          disabled={query.trimEnd() === '' || !hasConfiguredDatabase}
         >
           <Icon name="Play" className="mr-1 h-4 w-4" />
           Run query{' '}
