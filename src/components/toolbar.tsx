@@ -14,7 +14,6 @@ import { CommandPalette } from './command-palette';
 export const Toolbar = () => {
   const [layout, setLayout] = useAtom(selectedLayoutAtom);
   const [showResultPanel, setShowResultPanel] = useAtom(showResultPanelAtom);
-  const [hasConfiguredDatabase] = useAtom(hasConfiguredDatabaseAtom);
 
   return (
     <div className="sticky top-0 z-30 px-4 lg:px-6 flex items-center justify-between py-4 border-b border-b-gray-subtle bg-app">
@@ -51,7 +50,6 @@ export const Toolbar = () => {
           <ThemeSelect />
           <div className="flex items-center justify-center space-x-5 rounded-md border border-gray-primary px-4 py-2">
             <button
-              disabled={!hasConfiguredDatabase}
               onClick={() => setLayout('horizontal')}
               className={cn(
                 'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app disabled:cursor-not-allowed disabled:opacity-50',
@@ -63,7 +61,6 @@ export const Toolbar = () => {
             </button>
 
             <button
-              disabled={!hasConfiguredDatabase}
               onClick={() => setLayout('vertical')}
               className={cn(
                 'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app disabled:cursor-not-allowed disabled:opacity-50',
@@ -75,7 +72,6 @@ export const Toolbar = () => {
             </button>
 
             <button
-              disabled={!hasConfiguredDatabase}
               onClick={() => setShowResultPanel(!showResultPanel)}
               className={cn(
                 'rounded-sm hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app disabled:cursor-not-allowed disabled:opacity-50',

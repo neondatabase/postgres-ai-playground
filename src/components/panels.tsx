@@ -27,10 +27,8 @@ export const Panels = () => {
       {!hasConfiguredDatabase && (
         <>
           <Banner />
-          <div className="fixed backdrop-blur-[2px] z-10 left-0 top-0 w-full h-full" />
         </>
       )}
-
       <div className={cn('h-[92vh]')}>
         <PanelGroup direction="horizontal">
           <Panel
