@@ -26,6 +26,7 @@ export const connect = async ({
     const databaseSchema = rows
       .map((table) => {
         const columns = table.columns_and_types
+          // @ts-ignore
           .map((column) => {
             const [name, type] = column.split(' ');
             return `${name} ${type}`;
