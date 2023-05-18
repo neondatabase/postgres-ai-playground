@@ -13,6 +13,7 @@ import { useForm } from 'react-hook-form';
 import { TextInput } from './shared/text-input';
 import { useAtom } from 'jotai';
 import {
+  schemaAtom,
   hasConfiguredDatabaseAtom,
   queryAtom,
   responseAtom,
@@ -38,6 +39,7 @@ export const CommandPalette = () => {
   const [isOpen, setIsOpen] = useAtom(showCommandPaletteAtom);
   const [response, setResponse] = useAtom(responseAtom);
   const [hasConfiguredDatabase] = useAtom(hasConfiguredDatabaseAtom);
+  const [schema] = useAtom(schemaAtom);
   const [query, setQuery] = useAtom(queryAtom);
   const { resolvedTheme } = useTheme();
 
@@ -60,6 +62,7 @@ export const CommandPalette = () => {
           },
           body: JSON.stringify({
             prompt,
+            schema,
           }),
         }
       );

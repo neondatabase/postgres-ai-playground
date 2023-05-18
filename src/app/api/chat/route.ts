@@ -17,9 +17,11 @@ export async function POST(req: NextRequest): Promise<Response> {
     return NextResponse.json(limit, { status: 429 });
   }
 
-  const { prompt } = (await req.json()) as {
+  const { prompt, schema } = (await req.json()) as {
     prompt?: string;
+    schema?: string;
   };
+  console.log(schema);
 
   if (!prompt) {
     return new Response('No prompt in the request', { status: 400 });
@@ -30,11 +32,16 @@ export async function POST(req: NextRequest): Promise<Response> {
     messages: [
       {
         role: 'system',
-        content: `you are an AI assistant that only knows about PostgreSQL. All of your responses will be about Postgres, if asked about any other database say you do not know`,
+        content: `You are an AI assistant that only knows about PostgreSQL. All of your responses will be about Postgres. If asked about anything else, say you do not know`,
       },
       {
         role: 'user',
-        content: `--${prompt}\n prefix the response with -- unless it is SQL code
+        content: `
+        My database schema is: ${schema}
+
+        --${prompt} 
+                
+        prefix the response with -- unless it is SQL code
       `,
       },
     ],

@@ -1,4 +1,4 @@
-import { Pool } from '@neondatabase/serverless';
+import { Pool, neonConfig } from '@neondatabase/serverless';
 
 type ConnectOptions = {
   connectionString: string;
@@ -12,9 +12,29 @@ export const connect = async ({
   try {
     const databaseName = connectionString.split('/')[3];
 
-    const client = new Pool({
-      connectionString,
-    });
+    const client = new Pool({ connectionString });
+
+    // neonConfig.wsProxy = 'ws-proxy.onrender.com/v1';
+    // neonConfig.pipelineConnect = false;
+
+    // get all tables and columns in the database
+    const { rows } = await client.query(
+      ` SELECT table_name, array_agg(column_name || ' ' || data_type) AS columns_and_types FROM information_schema.columns WHERE table_schema = 'public' GROUP BY table_name ORDER BY table_name;`
+    );
+
+    // transform into CSV
+    const databaseSchema = rows
+      .map((table) => {
+        const columns = table.columns_and_types
+          .map((column) => {
+            const [name, type] = column.split(' ');
+            return `${name} ${type}`;
+          })
+          .join(', ');
+
+        return `${table.table_name} (${columns});`;
+      })
+      .join('\n');
 
     //////// Tables
     const { rows: tables } = await client.query(
@@ -79,6 +99,7 @@ export const connect = async ({
 
     return {
       editorSchema,
+      databaseSchema,
       tables,
       views,
       databaseName,

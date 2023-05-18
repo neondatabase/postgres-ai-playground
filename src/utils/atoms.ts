@@ -33,6 +33,11 @@ export const connectionStringAtom = atomWithStorage<string | undefined>(
   undefined
 );
 
+export const schemaAtom = atomWithStorage<string | undefined>(
+  'schema',
+  undefined
+);
+
 export const queryAtom = atomWithStorage<string>('query', '');
 export const queryResultAtom = atom<
   | {
@@ -48,8 +53,6 @@ export const hasConfiguredDatabaseAtom = atomWithStorage<boolean>(
   'hasConfiguredDatabase',
   false
 );
-
-export const schemaAtom = atom<string[] | undefined>(undefined);
 
 // AI
 export const showCommandPaletteAtom = atom<boolean>(false);

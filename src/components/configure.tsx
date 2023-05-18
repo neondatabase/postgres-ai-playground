@@ -11,7 +11,11 @@ import { useForm } from 'react-hook-form';
 import { TextInput } from './shared/text-input';
 import { Label } from './shared/label';
 import { useAtom } from 'jotai';
-import { connectionStringAtom, hasConfiguredDatabaseAtom } from '@/utils/atoms';
+import {
+  connectionStringAtom,
+  schemaAtom,
+  hasConfiguredDatabaseAtom,
+} from '@/utils/atoms';
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { connect } from '@/utils/connect';
@@ -31,6 +35,8 @@ export const ConfigurationDialog = () => {
     hasConfiguredDatabaseAtom
   );
 
+  const [schema, setSchema] = useAtom(schemaAtom);
+
   const { mutate, isLoading } = useMutation(
     async (data: FormValues) => {
       const res = await connect(data);
@@ -40,6 +46,7 @@ export const ConfigurationDialog = () => {
       onSuccess: (data) => {
         toast.success('Configuration saved successfully');
         setConnectionString(data.connectionString);
+        setSchema(data.databaseSchema);
         setHasConfiguredDatabase(true);
         setIsOpen(false);
       },
@@ -98,6 +105,7 @@ export const ConfigurationDialog = () => {
               <Button
                 onClick={() => {
                   setConnectionString('');
+                  setSchema(undefined);
                   setHasConfiguredDatabase(false);
                   setIsOpen(false);
                 }}
