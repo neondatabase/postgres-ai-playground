@@ -18,13 +18,12 @@ export const runQuery = async ({ connectionString, query }: queryOptions) => {
     client.end();
 
     // get query execution time
-
     startTime = Date.now();
 
     return {
-      rows,
-      rowCount,
-      columns: fields.map((field) => field.name),
+      rows: rows ?? [],
+      rowCount: rowCount ?? 0,
+      columns: fields?.map((field) => field.name) ?? [],
       startTime,
     };
   } catch (error) {
