@@ -27,7 +27,7 @@ type FormValues = {
   connectionString: string;
 };
 
-export const ConfigurationDialog = () => {
+export const ConnectDialog = () => {
   const { register, handleSubmit } = useForm<FormValues>();
   const [isOpen, setIsOpen] = useState(false);
   const [connectionString, setConnectionString] = useAtom(connectionStringAtom);

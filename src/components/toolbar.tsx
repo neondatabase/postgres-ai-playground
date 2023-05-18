@@ -7,7 +7,7 @@ import {
 } from '@/utils/atoms';
 import { Icon } from './shared/icon';
 import { cn } from '@/utils/cn';
-import { ConfigurationDialog } from './configure';
+import { ConnectDialog } from './connect';
 import { ThemeSelect } from './theme-select';
 import { CommandPalette } from './command-palette';
 
@@ -83,7 +83,7 @@ export const Toolbar = () => {
             </button>
           </div>
         </div>
-        <ConfigurationDialog />
+        <ConnectDialog />
       </div>{' '}
     </div>
   );
