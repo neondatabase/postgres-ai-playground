@@ -10,6 +10,7 @@ import {
   editorSchemaAtom,
   queryAtom,
   queryResultAtom,
+  schemaAtom,
   showCommandPaletteAtom,
 } from '@/utils/atoms';
 import { useAtom } from 'jotai';
@@ -29,6 +30,7 @@ export const Editor = () => {
   );
   const [hasConfiguredDatabase] = useAtom(connectionStringAtom);
   const [editorSchema] = useAtom(editorSchemaAtom);
+  const [schema, setSchema] = useAtom(schemaAtom);
   const queryClient = useQueryClient();
 
   const { mutate, isLoading } = useMutation(
@@ -38,6 +40,7 @@ export const Editor = () => {
       onSuccess: (data) => {
         // @ts-ignore
         setQueryResult(data);
+        setSchema(data.databaseSchema);
         queryClient.invalidateQueries({ queryKey: ['schema'] });
       },
       onError: (error) => {
