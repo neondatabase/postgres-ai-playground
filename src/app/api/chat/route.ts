@@ -21,7 +21,6 @@ export async function POST(req: NextRequest): Promise<Response> {
     prompt?: string;
     schema?: string;
   };
-  console.log(schema);
 
   if (!prompt) {
     return new Response('No prompt in the request', { status: 400 });
