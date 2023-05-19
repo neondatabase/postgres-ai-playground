@@ -8,7 +8,7 @@ export const Banner = () => {
           This playground enables you to connect to a Neon Postgres database
           directly from your browser. You can learn more about{' '}
           <a
-            href="https://neon.tech/blog"
+            href="https://neon.tech/blog/postgres-ai-playground"
             className="text-green-base font-semibold hover:underline"
           >
             how it works
@@ -18,7 +18,7 @@ export const Banner = () => {
           <br />
           If you don&apos;t have a Neon database, you can{' '}
           <a
-            href="https://console.neon.tech"
+            href="https://console.neon.tech?utm_source=playground&utm_medium=banner"
             className="text-green-base font-semibold hover:underline"
           >
             {' '}
