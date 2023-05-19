@@ -180,6 +180,24 @@ export const CommandPalette = () => {
                   'overflow-hidden rounded-full py-1 pl-2 pr-3 text-xs font-medium backdrop-blur transition hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app'
                 )}
                 onClick={() => {
+                  setQuery(response);
+                  setIsOpen(false);
+                }}
+              >
+                <span
+                  className={cn(
+                    'pointer-events-none flex items-center gap-1 transition duration-300'
+                  )}
+                >
+                  Replace code &crarr;
+                </span>
+              </button>
+              <button
+                type="button"
+                className={cn(
+                  'overflow-hidden rounded-full py-1 pl-2 pr-3 text-xs font-medium backdrop-blur transition hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app'
+                )}
+                onClick={() => {
                   setQuery(query + response);
                   setIsOpen(false);
                 }}
@@ -189,7 +207,7 @@ export const CommandPalette = () => {
                     'pointer-events-none flex items-center gap-1 transition duration-300'
                   )}
                 >
-                  insert code &crarr;
+                  Append result &crarr;
                 </span>
               </button>
             </div>
