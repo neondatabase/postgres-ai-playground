@@ -1,7 +1,7 @@
 'use client';
 import CodeMirror from '@uiw/react-codemirror';
 import { sql, PostgreSQL } from '@codemirror/lang-sql';
-import { githubLight, githubDark } from '@uiw/codemirror-theme-github';
+import { githubLight } from '@uiw/codemirror-theme-github';
 import { keymap } from '@codemirror/view';
 import { defaultKeymap } from '@codemirror/commands';
 import { EditorView } from '@codemirror/view';
