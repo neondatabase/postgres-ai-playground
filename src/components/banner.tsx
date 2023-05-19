@@ -24,8 +24,8 @@ export const Banner = () => {
             {' '}
             create one for free
           </a>
-          . Once you have a database, click connect and enter the connection
-          details.
+          . Once you have a database, click connect in top right and enter the
+          connection details.
         </p>
       </div>
     </div>
