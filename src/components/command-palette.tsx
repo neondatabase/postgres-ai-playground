@@ -28,6 +28,7 @@ import { EditorView } from '@codemirror/view';
 import { PostgreSQL, sql } from '@codemirror/lang-sql';
 import { useTheme } from 'next-themes';
 import { githubDark, githubLight } from '@uiw/codemirror-theme-github';
+import { Spinner } from './shared/spinner';
 
 type FormValues = {
   prompt: string;
@@ -138,7 +139,7 @@ export const CommandPalette = () => {
             Ask AI a question about Postgres and SQL{' '}
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="relative">
           <TextInput
             disabled={isLoading}
             {...register('prompt', {
@@ -149,6 +150,7 @@ export const CommandPalette = () => {
             type="text"
             placeholder={'create a user table'}
           />
+          {isLoading && <Spinner className="absolute right-2 top-2" />}
         </form>
 
         {response && (
