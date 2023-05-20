@@ -170,7 +170,7 @@ export const CommandPalette = () => {
                 }),
               ]}
               editable={false}
-              className="prose-sm rounded-md editor border-gray-subtle border overflow-scroll max-h-96"
+              className="prose-sm rounded-md editor border-gray-subtle border overflow-auto max-h-96"
               value={response}
             />
             <div className="flex justify-end space-x-2">

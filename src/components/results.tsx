@@ -42,7 +42,7 @@ export const Results = () => {
   return (
     <>
       {queryResult ? (
-        <div className="mx-3 inline-block  py-2 align-middle">
+        <div className="mx-3 inline-block py-2 align-middle overflow-auto">
           <div className="flex flex-1 flex-col items-center justify-center space-y-3">
             <Table>
               <TableHeader>
