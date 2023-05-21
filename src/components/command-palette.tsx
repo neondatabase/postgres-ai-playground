@@ -184,7 +184,15 @@ export const CommandPalette = () => {
               >
                 Append result
               </Button>
-              <Button appearance="primary">Replace code</Button>
+              <Button
+                appearance="primary"
+                onClick={() => {
+                  setQuery(response);
+                  setIsOpen(false);
+                }}
+              >
+                Replace code
+              </Button>
             </div>
           </>
         )}
