@@ -9,11 +9,11 @@ import {
   SelectValue,
 } from '@/components/shared/select';
 
-export const ThemeSelect = () => {
+const ThemeSelect = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div>
+    <>
       <Select value={theme} onValueChange={setTheme}>
         <SelectTrigger className="w-[200px]">
           <SelectValue placeholder="Theme" />
@@ -31,7 +31,6 @@ export const ThemeSelect = () => {
               <span>Light</span>
             </div>
           </SelectItem>
-
           <SelectItem value="dark">
             <div className="flex items-center space-x-3">
               <Icon name="Moon" className="h-4 w-4" />
@@ -40,6 +39,8 @@ export const ThemeSelect = () => {
           </SelectItem>
         </SelectContent>
       </Select>
-    </div>
+    </>
   );
 };
+
+export default ThemeSelect

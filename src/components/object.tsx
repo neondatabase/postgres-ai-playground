@@ -4,10 +4,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from './shared/accordion';
-import { Icon } from './shared/icon';
+import {Icon, type IconProps} from './shared/icon';
 
-// @ts-ignore
-export const Object = ({ name, data }) => {
+type ObjectPropName = IconProps['name']
+
+interface ObjectProps {
+  name: ObjectPropName
+  data: any
+}
+export const Object = ({ name, data }: ObjectProps) => {
   return (
     <Accordion className="text-sm" type="multiple">
       <AccordionItem value={name}>
@@ -17,8 +22,7 @@ export const Object = ({ name, data }) => {
         </AccordionTrigger>
         <AccordionContent className="ml-3">
           {
-            // @ts-ignore
-            data.map((item) => (
+            data.map((item: any) => (
               <Accordion key={item.table_name} type="multiple">
                 <AccordionItem value={item.table_name}>
                   <AccordionTrigger className="my-1.5">
@@ -36,8 +40,7 @@ export const Object = ({ name, data }) => {
                         <AccordionContent className="ml-12">
                           <div className="mb-3 space-y-4">
                             {
-                              // @ts-ignore
-                              item.columns.map((column) => (
+                              item.columns.map((column: any) => (
                                 <div
                                   key={column.column_name}
                                   className="flex items-center space-x-3"
@@ -45,7 +48,6 @@ export const Object = ({ name, data }) => {
                                   <span className="flex-1">
                                     {column.column_name}
                                   </span>
-
                                   <span className="text-xs inline-flex items-center whitespace-nowrap rounded-full bg-element px-2.5 py-0.5">
                                     {column.data_type}
                                   </span>
@@ -55,7 +57,6 @@ export const Object = ({ name, data }) => {
                           </div>
                         </AccordionContent>
                       </AccordionItem>
-
                       <AccordionItem value="indexes">
                         <AccordionTrigger className="mb-3 ml-6">
                           Indexes{' '}
@@ -66,14 +67,13 @@ export const Object = ({ name, data }) => {
                         <AccordionContent className="ml-12">
                           <div className="mb-3 space-y-3">
                             {
-                              // @ts-ignore
-                              item.indexes.map((index) => (
+                              item.indexes.map((databaseIndex: any) => (
                                 <div
-                                  key={index.index_name}
+                                  key={databaseIndex.indexname}
                                   className="flex space-x-3"
                                 >
                                   <span className="flex-1">
-                                    {index.indexname}
+                                    {databaseIndex.indexname}
                                   </span>
                                 </div>
                               ))

@@ -8,7 +8,7 @@ import {
 import { Icon } from './shared/icon';
 import { cn } from '@/utils/cn';
 import { ConnectDialog } from './connect';
-import { ThemeSelect } from './theme-select';
+import DynamicThemeSelect from '@/components/theme-select/dynamic-theme-select';
 import { CommandPalette } from './command-palette';
 
 export const Toolbar = () => {
@@ -47,7 +47,7 @@ export const Toolbar = () => {
       <div className="flex items-center space-x-3">
         <div className="flex items-center space-x-3">
           <CommandPalette />
-          <ThemeSelect />
+          <DynamicThemeSelect />
           <div className="flex items-center justify-center space-x-5 rounded-md border border-gray-primary px-4 py-2">
             <button
               onClick={() => setLayout('horizontal')}
