@@ -15,7 +15,7 @@ const DialogPortal = ({
   ...props
 }: DialogPrimitive.DialogPortalProps) => (
   <DialogPrimitive.Portal className={cn(className)} {...props}>
-    <div className='fixed inset-0 z-50 flex items-start justify-center sm:items-center'>
+    <div className="fixed inset-0 z-50 flex items-start justify-center sm:items-center">
       {children}
     </div>
   </DialogPrimitive.Portal>
@@ -28,7 +28,7 @@ const DialogOverlay = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <DialogPrimitive.Overlay
     className={cn(
-      'fixed inset-0 z-50 backdrop-blur-sm transition-all duration-100 data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in',
+      'fixed inset-0 z-50 backdrop-blur-sm transition-all duration-100 data-[state=closed]:animate-out data-[state=open]:fade-in data-[state=closed]:fade-out',
       className
     )}
     {...props}
@@ -52,9 +52,9 @@ const DialogContent = React.forwardRef<
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className='absolute right-4 top-4 rounded-full opacity-70 ring-offset-app  transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-element'>
-        <X className='h-4 w-4  ' />
-        <span className='sr-only'>Close</span>
+      <DialogPrimitive.Close className="absolute top-4 right-4 rounded-full opacity-70 focus-visible:opacity-100  ring-offset-app transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-element">
+        <X className="h-4 w-4  " />
+        <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
   </DialogPortal>

@@ -40,7 +40,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
           autoComplete={autoComplete}
           className={cn(
             className,
-            'block w-full rounded-md border-gray-primary bg-element text-gray-high-contrast shadow-sm transition-colors placeholder:text-gray-base/80 hover:border-gray-hover  sm:text-sm',
+            'block w-full rounded-md border-gray-primary hover:border-gray-hover transition-colors bg-element text-gray-high-contrast shadow-sm placeholder:text-gray-base/80  sm:text-sm',
             'disabled:cursor-not-allowed disabled:opacity-40',
             'transition-colors hover:border-gray-hover',
             'focus-visible:border-gray-hover focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app'
@@ -49,7 +49,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
           {...props}
         />
         {error && (
-          <p className='text-red-1100  mt-2 text-sm' id='email-error'>
+          <p className="text-red-1100  mt-2 text-sm" id="email-error">
             {error}
           </p>
         )}

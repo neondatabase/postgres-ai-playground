@@ -4,7 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import { Analytics } from '@vercel/analytics/react';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/lib/query-client';
-import React from 'react';
+import React from "react";
 
 type ProvidersProps = {
   children: React.ReactNode;
@@ -12,12 +12,12 @@ type ProvidersProps = {
 
 export default function Providers({ children }: ProvidersProps) {
   return (
-    <ThemeProvider attribute='data-theme'>
+    <ThemeProvider attribute="data-theme">
       <QueryClientProvider client={queryClient}>
         <Analytics />
         <Toaster
           containerStyle={{}}
-          position='bottom-right'
+          position="bottom-right"
           toastOptions={{
             success: {
               style: {

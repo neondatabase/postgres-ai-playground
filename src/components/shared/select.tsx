@@ -18,9 +18,9 @@ const SelectTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <SelectPrimitive.Trigger asChild ref={ref} {...props}>
     <Button
-      appearance='outlined'
-      className='text-ellipses overflow-hidden'
-      trailingIcon={<ChevronDown className='h-4 w-4 opacity-50' />}
+      appearance="outlined"
+      className="text-ellipses overflow-hidden"
+      trailingIcon={<ChevronDown className="h-4 w-4 opacity-50" />}
     >
       {children}
     </Button>
@@ -41,7 +41,7 @@ const SelectContent = React.forwardRef<
       )}
       {...props}
     >
-      <SelectPrimitive.Viewport className='p-1'>
+      <SelectPrimitive.Viewport className="p-1">
         {children}
       </SelectPrimitive.Viewport>
     </SelectPrimitive.Content>
@@ -55,7 +55,7 @@ const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn('py-1.5 pl-8 pr-2 text-sm', className)}
+    className={cn('py-1.5 pr-2 pl-8 text-sm', className)}
     {...props}
   />
 ));
@@ -73,9 +73,9 @@ const SelectItem = React.forwardRef<
     )}
     {...props}
   >
-    <span className='absolute right-2 flex h-3.5 w-3.5 items-center justify-center'>
+    <span className="absolute right-2 flex h-3.5 w-3.5 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
-        <Check className='h-4 w-4' />
+        <Check className="h-4 w-4" />
       </SelectPrimitive.ItemIndicator>
     </span>
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
@@ -89,7 +89,7 @@ const SelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={cn('-mx-1 my-1 h-px bg-element', className)}
+    className={cn('bg-element -mx-1 my-1 h-px', className)}
     {...props}
   />
 ));

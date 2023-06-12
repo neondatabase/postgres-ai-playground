@@ -29,7 +29,7 @@ import { PostgreSQL, sql } from '@codemirror/lang-sql';
 import { useTheme } from 'next-themes';
 import { githubDark, githubLight } from '@uiw/codemirror-theme-github';
 import { Spinner } from './shared/spinner';
-import { env } from '@/env.mjs';
+import {env} from "@/env.mjs";
 
 type FormValues = {
   prompt: string;
@@ -54,16 +54,19 @@ export const CommandPalette = () => {
     async ({ prompt }: FormValues) => {
       setResponse('');
 
-      const response = await fetch(`${env.NEXT_PUBLIC_APP_URL}/api/chat`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          prompt,
-          schema,
-        }),
-      });
+      const response = await fetch(
+        `${env.NEXT_PUBLIC_APP_URL}/api/chat`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            prompt,
+            schema,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(response.statusText);
@@ -104,27 +107,27 @@ export const CommandPalette = () => {
         <DialogTrigger asChild>
           <Button
             disabled={!hasConfiguredDatabase}
-            className='group relative'
-            appearance='outlined'
-            leadingIcon={<Icon name='Sparkles' className='mr-1 h-4 w-4' />}
+            className="relative group"
+            appearance="outlined"
+            leadingIcon={<Icon name="Sparkles" className="mr-1 h-4 w-4" />}
           >
             <span>Ask AI</span>
-            <span className='-mr-1 ml-2 hidden items-center rounded bg-element px-1.5 text-xs text-gray-base group-hover:text-gray-high-contrast lg:inline-flex'>
+            <span className="group-hover:text-gray-high-contrast hidden lg:inline-flex bg-element px-1.5 items-center ml-2 text-gray-base -mr-1 rounded text-xs">
               <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='12'
-                height='12'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='currentColor'
-                strokeWidth='2'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                className='align-middle'
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="align-middle"
               >
-                <path d='M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z'></path>
+                <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
               </svg>{' '}
-              + <span className='font-mono text-xs'>k</span>
+              + <span className="font-mono text-xs">k</span>
             </span>
           </Button>
         </DialogTrigger>
@@ -137,18 +140,18 @@ export const CommandPalette = () => {
             Ask AI a question about Postgres and SQL{' '}
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit(onSubmit)} className='relative'>
+        <form onSubmit={handleSubmit(onSubmit)} className="relative">
           <TextInput
             disabled={isLoading}
             {...register('prompt', {
               required: true,
             })}
-            id='prompt'
-            name='prompt'
-            type='text'
+            id="prompt"
+            name="prompt"
+            type="text"
             placeholder={'create a user table'}
           />
-          {isLoading && <Spinner className='absolute right-2 top-2' />}
+          {isLoading && <Spinner className="absolute right-2 top-2" />}
         </form>
 
         {response && (
@@ -168,13 +171,13 @@ export const CommandPalette = () => {
                 }),
               ]}
               editable={false}
-              className='editor prose-sm max-h-96 overflow-auto rounded-md border border-gray-subtle'
+              className="prose-sm rounded-md editor border-gray-subtle border overflow-auto max-h-96"
               value={response}
             />
-            <div className='flex justify-end space-x-2'>
+            <div className="flex justify-end space-x-2">
               <CopyButton text={response} />
               <Button
-                appearance='outlined'
+                appearance="outlined"
                 onClick={() => {
                   setQuery(query + response);
                   setIsOpen(false);
@@ -183,7 +186,7 @@ export const CommandPalette = () => {
                 Append result
               </Button>
               <Button
-                appearance='primary'
+                appearance="primary"
                 onClick={() => {
                   setQuery(response);
                   setIsOpen(false);

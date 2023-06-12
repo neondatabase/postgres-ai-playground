@@ -83,7 +83,7 @@ export const CopyButton = ({ text }: { text: string }) => {
 
   return (
     <button
-      type='button'
+      type="button"
       className={cn(
         'overflow-hidden rounded-full py-1 pl-2 pr-3 text-xs font-medium backdrop-blur transition hover:text-gray-high-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app',
         isCopied ? '' : ''
@@ -97,7 +97,7 @@ export const CopyButton = ({ text }: { text: string }) => {
           isCopied && '-translate-y-1.5 opacity-0'
         )}
       >
-        <Icon name='Copy' className='h-4 w-4 transition-colors' />
+        <Icon name="Copy" className="h-4 w-4 transition-colors" />
         Copy
       </span>
       <span

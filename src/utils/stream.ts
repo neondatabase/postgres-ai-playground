@@ -3,7 +3,7 @@ import {
   ParsedEvent,
   ReconnectInterval,
 } from 'eventsource-parser';
-import { env } from '@/env.mjs';
+import { env } from "@/env.mjs";
 
 export type ChatGPTAgent = 'user' | 'system';
 

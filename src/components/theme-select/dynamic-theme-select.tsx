@@ -1,10 +1,7 @@
-import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic'
 
-const DynamicThemeSelect = dynamic(
-  () => import('@/components/theme-select/theme-select'),
-  {
+const DynamicThemeSelect = dynamic(() => import('@/components/theme-select/theme-select'), {
     ssr: true,
-  }
-);
+})
 
-export default DynamicThemeSelect;
+export default DynamicThemeSelect

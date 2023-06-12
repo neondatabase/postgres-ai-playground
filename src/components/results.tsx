@@ -42,8 +42,8 @@ export const Results = () => {
   return (
     <>
       {queryResult ? (
-        <div className='mx-3 inline-block overflow-auto py-2 align-middle'>
-          <div className='flex flex-1 flex-col items-center justify-center space-y-3'>
+        <div className="mx-3 inline-block py-2 align-middle overflow-auto">
+          <div className="flex flex-1 flex-col items-center justify-center space-y-3">
             <Table>
               <TableHeader>
                 {table.getHeaderGroups().map((headerGroup) => (
@@ -86,38 +86,38 @@ export const Results = () => {
           </div>
           {table.getRowModel().rows?.length > 0 && (
             <nav
-              className='flex items-center justify-between py-3'
-              aria-label='Pagination'
+              className="flex items-center justify-between py-3"
+              aria-label="Pagination"
             >
-              <div className='hidden sm:block'>
-                <p className='text-sm'>
+              <div className="hidden sm:block">
+                <p className="text-sm">
                   Showing{' '}
-                  <span className='font-medium'>
+                  <span className="font-medium">
                     {table.getRowModel().rows[0].index + 1}
                   </span>{' '}
                   to{' '}
-                  <span className='font-medium'>
+                  <span className="font-medium">
                     {table.getRowModel().rows[
                       table.getRowModel().rows.length - 1
                     ].index + 1}{' '}
                   </span>{' '}
                   out of{' '}
-                  <span className='font-medium'>{queryResult.rowCount}</span>{' '}
+                  <span className="font-medium">{queryResult.rowCount}</span>{' '}
                   results.
                 </p>
               </div>
-              <div className='flex flex-1 justify-between space-x-2 sm:justify-end'>
+              <div className="flex flex-1 space-x-2 justify-between sm:justify-end">
                 <Button
-                  appearance='outlined'
-                  size='small'
+                  appearance="outlined"
+                  size="small"
                   onClick={() => table.previousPage()}
                   disabled={!table.getCanPreviousPage()}
                 >
                   Previous
                 </Button>
                 <Button
-                  appearance='outlined'
-                  size='small'
+                  appearance="outlined"
+                  size="small"
                   onClick={() => table.nextPage()}
                   disabled={!table.getCanNextPage()}
                 >
@@ -128,9 +128,9 @@ export const Results = () => {
           )}
         </div>
       ) : (
-        <div className='flex flex-1 flex-col items-center justify-center space-y-3'>
-          <Icon name='Inbox' className='h-8 w-8' />
-          <p className='text-center'>
+        <div className="flex flex-1 flex-col items-center justify-center space-y-3">
+          <Icon name="Inbox" className="h-8 w-8" />
+          <p className="text-center">
             The results of your query will appear here
           </p>
         </div>

@@ -103,7 +103,7 @@ export const Editor = () => {
         basicSetup={{
           defaultKeymap: false,
         }}
-        placeholder='Write your query here...'
+        placeholder="Write your query here..."
         onChange={(value) => setQuery(value)}
         extensions={[
           EditorView.lineWrapping,
@@ -134,9 +134,9 @@ export const Editor = () => {
             tables: editorSchema?.tables,
           }),
         ]}
-        height='92vh'
+        height="92vh"
       />
-      <div className='sticky bottom-10 float-right mx-5'>
+      <div className="sticky bottom-10 mx-5 float-right">
         <Button
           onClick={() => {
             mutate(query);
@@ -144,7 +144,7 @@ export const Editor = () => {
           loading={isLoading}
           disabled={query.trimEnd() === '' || !hasConfiguredDatabase}
         >
-          <Icon name='Play' className='mr-1 h-4 w-4' />
+          <Icon name="Play" className="mr-1 h-4 w-4" />
           Run query{' '}
         </Button>
       </div>

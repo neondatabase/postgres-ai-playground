@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import Providers from '@/components/providers';
 import '../styles/globals.css';
 import { Inter } from 'next/font/google';
 import { cn } from '@/utils/cn';
 import { Metadata } from 'next';
-import { env } from '@/env.mjs';
+import { env } from "@/env.mjs";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -47,9 +47,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={cn(inter.className, 'bg-app text-gray-base')}>
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

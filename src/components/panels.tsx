@@ -23,23 +23,23 @@ export const Panels = () => {
   const duration = queryResult && Date.now() - queryResult?.startTime;
 
   return (
-    <div className='relative'>
+    <div className="relative">
       {!hasConfiguredDatabase && (
         <>
           <Banner />
         </>
       )}
       <div className={cn('h-[92vh]')}>
-        <PanelGroup direction='horizontal'>
+        <PanelGroup direction="horizontal">
           <Panel
-            className='flex flex-col bg-app'
+            className="flex flex-col bg-app"
             defaultSize={12}
             minSize={12}
             maxSize={50}
           >
             <Sidebar />
           </Panel>
-          <PanelResizeHandle className='w-2 border-r border-r-gray-subtle focus-visible:border-r-2 focus-visible:border-r-primary-hover focus-visible:outline-none' />
+          <PanelResizeHandle className="w-2 focus-visible:outline-none border-r border-r-gray-subtle focus-visible:border-r-2 focus-visible:border-r-primary-hover" />
           <Panel defaultSize={88} minSize={50}>
             <PanelGroup direction={selectedLayout}>
               <Panel defaultSize={45} minSize={10}>
@@ -49,7 +49,7 @@ export const Panels = () => {
                 className={cn(
                   selectedLayout === 'horizontal'
                     ? 'w-2 border-l border-l-gray-subtle focus-visible:border-l-2 focus-visible:border-l-primary-hover'
-                    : 'h-2 w-full border-t border-t-gray-subtle focus-visible:border-b-2 focus-visible:border-b-primary-hover',
+                    : 'h-2 border-t border-t-gray-subtle w-full focus-visible:border-b-2 focus-visible:border-b-primary-hover',
                   'focus-visible:outline-none'
                 )}
               />
@@ -62,7 +62,7 @@ export const Panels = () => {
                   )}
                 >
                   {queryResult && (
-                    <p className='mx-3 mt-3 text-sm'>Ran in {duration}ms</p>
+                    <p className="mx-3 mt-3 text-sm">Ran in {duration}ms</p>
                   )}
                   <Results />
                 </Panel>
