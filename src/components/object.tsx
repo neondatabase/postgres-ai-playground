@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from './shared/accordion';
-import {Icon, type IconProps} from './shared/icon';
+import { Icon, type IconProps } from './shared/icon';
 
 type ObjectPropName = IconProps['name']
 

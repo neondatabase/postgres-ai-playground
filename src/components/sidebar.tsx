@@ -1,10 +1,14 @@
-import {connectionStringAtom, editorSchemaAtom, hasConfiguredDatabaseAtom,} from '@/utils/atoms';
-import {connect} from '@/utils/connect';
-import {useQuery} from '@tanstack/react-query';
-import {useAtom} from 'jotai';
+import {
+  connectionStringAtom,
+  editorSchemaAtom,
+  hasConfiguredDatabaseAtom
+} from '@/utils/atoms';
+import { connect } from '@/utils/connect';
+import { useQuery } from '@tanstack/react-query';
+import { useAtom } from 'jotai';
 import React from 'react';
-import {toast} from 'react-hot-toast';
-import {Object} from './object';
+import { toast } from 'react-hot-toast';
+import { Object } from './object';
 
 export const Sidebar = () => {
   const [connectionString] = useAtom(connectionStringAtom);
