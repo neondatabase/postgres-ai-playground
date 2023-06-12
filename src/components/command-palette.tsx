@@ -29,6 +29,7 @@ import { PostgreSQL, sql } from '@codemirror/lang-sql';
 import { useTheme } from 'next-themes';
 import { githubDark, githubLight } from '@uiw/codemirror-theme-github';
 import { Spinner } from './shared/spinner';
+import {env} from "@/env.mjs";
 
 type FormValues = {
   prompt: string;
@@ -54,7 +55,7 @@ export const CommandPalette = () => {
       setResponse('');
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/chat`,
+        `${env.NEXT_PUBLIC_APP_URL}/api/chat`,
         {
           method: 'POST',
           headers: {
