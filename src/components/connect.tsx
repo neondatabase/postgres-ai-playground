@@ -63,11 +63,11 @@ export const ConnectDialog = () => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <>
         <DialogTrigger asChild>
-          <Button className="relative" appearance="outlined">
+          <Button className='relative' appearance='outlined'>
             {!hasConfiguredDatabase && (
-              <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-solid opacity-75"></span>
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-solid-hover"></span>
+              <span className='absolute -right-1 -top-1 flex h-2.5 w-2.5'>
+                <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-solid opacity-75'></span>
+                <span className='relative inline-flex h-2.5 w-2.5 rounded-full bg-solid-hover'></span>
               </span>
             )}
             <span>Connect</span>
@@ -85,14 +85,14 @@ export const ConnectDialog = () => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <Label className="mb-1" size="sm" htmlFor="connectionString">
+            <Label className='mb-1' size='sm' htmlFor='connectionString'>
               Database connection string
             </Label>
             <TextInput
               {...register('connectionString')}
-              id="connectionString"
-              name="connectionString"
-              type="text"
+              id='connectionString'
+              name='connectionString'
+              type='text'
               placeholder={
                 connectionString
                   ? maskPassword(connectionString)
@@ -100,7 +100,7 @@ export const ConnectDialog = () => {
               }
             />
           </div>
-          <div className="flex justify-end space-x-5 mt-8">
+          <div className='mt-8 flex justify-end space-x-5'>
             {connectionString && (
               <Button
                 onClick={() => {
@@ -109,13 +109,13 @@ export const ConnectDialog = () => {
                   setHasConfiguredDatabase(false);
                   setIsOpen(false);
                 }}
-                type="submit"
-                appearance="danger"
+                type='submit'
+                appearance='danger'
               >
                 Remove connection
               </Button>
             )}
-            <Button loading={isLoading} type="submit">
+            <Button loading={isLoading} type='submit'>
               Save
             </Button>
           </div>

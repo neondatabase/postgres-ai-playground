@@ -1,7 +1,7 @@
 import {
   connectionStringAtom,
   editorSchemaAtom,
-  hasConfiguredDatabaseAtom
+  hasConfiguredDatabaseAtom,
 } from '@/utils/atoms';
 import { connect } from '@/utils/connect';
 import { useQuery } from '@tanstack/react-query';
@@ -23,7 +23,7 @@ export const Sidebar = () => {
           connectionString: connectionString,
         });
       } else {
-        toast.error(`Connection string is required`)
+        toast.error(`Connection string is required`);
       }
     },
     {
@@ -38,18 +38,18 @@ export const Sidebar = () => {
   );
 
   return (
-    <div className="flex flex-1 flex-col space-y-2 overflow-y-auto px-3 py-5">
+    <div className='flex flex-1 flex-col space-y-2 overflow-y-auto px-3 py-5'>
       {hasConfiguredDatabase && isLoading ? (
-        <div className="space-y-5">
-          <div className="bg-element-active animate-pulse w-fill max-w-28 h-4 my-1.5 rounded-md"></div>
-          <div className="bg-element-active animate-pulse w-fill max-w-28 h-4 my-1.5 rounded-md"></div>
+        <div className='space-y-5'>
+          <div className='w-fill max-w-28 my-1.5 h-4 animate-pulse rounded-md bg-element-active'></div>
+          <div className='w-fill max-w-28 my-1.5 h-4 animate-pulse rounded-md bg-element-active'></div>
         </div>
       ) : (
         <>
           {data && (
             <>
-              <Object name="Tables" data={data.tables} />
-              <Object name="Views" data={data.views} />
+              <Object name='Tables' data={data.tables} />
+              <Object name='Views' data={data.views} />
             </>
           )}
         </>

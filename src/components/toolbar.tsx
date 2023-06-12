@@ -16,39 +16,39 @@ export const Toolbar = () => {
   const [showResultPanel, setShowResultPanel] = useAtom(showResultPanelAtom);
 
   return (
-    <div className="sticky top-0 z-30 px-4 lg:px-6 flex items-center justify-between py-4 border-b border-b-gray-subtle bg-app">
-      <div className="inline-flex items-center">
+    <div className='sticky top-0 z-30 flex items-center justify-between border-b border-b-gray-subtle bg-app px-4 py-4 lg:px-6'>
+      <div className='inline-flex items-center'>
         <a
-          className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app p-1 rounded-md"
-          href="https://neon.tech"
-          rel="noopener"
-          target="_blank"
+          className='rounded-md p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-hover focus-visible:ring-offset-2 focus-visible:ring-offset-app'
+          href='https://neon.tech'
+          rel='noopener'
+          target='_blank'
         >
-          <Icon name="Logo" />
+          <Icon name='Logo' />
         </a>
         <svg
-          fill="none"
-          height="26"
-          shapeRendering="geometricPrecision"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="1.5"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          className="ml-1.5"
+          fill='none'
+          height='26'
+          shapeRendering='geometricPrecision'
+          stroke='currentColor'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='1.5'
+          viewBox='0 0 24 24'
+          aria-hidden='true'
+          className='ml-1.5'
         >
-          <path d="M16.88 3.549L7.12 20.451"></path>
+          <path d='M16.88 3.549L7.12 20.451'></path>
         </svg>
-        <span className="ml-1 lg:text-lg font-semibold text-gray-high-contrast">
+        <span className='ml-1 font-semibold text-gray-high-contrast lg:text-lg'>
           Postgres AI Playground
         </span>
       </div>
-      <div className="flex items-center space-x-3">
-        <div className="flex items-center space-x-3">
+      <div className='flex items-center space-x-3'>
+        <div className='flex items-center space-x-3'>
           <CommandPalette />
           <DynamicThemeSelect />
-          <div className="flex items-center justify-center space-x-5 rounded-md border border-gray-primary px-4 py-2">
+          <div className='flex items-center justify-center space-x-5 rounded-md border border-gray-primary px-4 py-2'>
             <button
               onClick={() => setLayout('horizontal')}
               className={cn(
@@ -57,7 +57,7 @@ export const Toolbar = () => {
                   'text-gray-high-contrast hover:text-gray-high-contrast'
               )}
             >
-              <Icon className="h-4 w-4" name="Columns" />
+              <Icon className='h-4 w-4' name='Columns' />
             </button>
 
             <button
@@ -68,7 +68,7 @@ export const Toolbar = () => {
                   'text-gray-high-contrast hover:text-gray-high-contrast'
               )}
             >
-              <Icon className="h-4 w-4 rotate-90" name="Columns" />
+              <Icon className='h-4 w-4 rotate-90' name='Columns' />
             </button>
 
             <button
@@ -79,7 +79,7 @@ export const Toolbar = () => {
                   'text-gray-high-contrast hover:text-gray-high-contrast'
               )}
             >
-              <Icon className="h-4 w-4" name="Square" />
+              <Icon className='h-4 w-4' name='Square' />
             </button>
           </div>
         </div>

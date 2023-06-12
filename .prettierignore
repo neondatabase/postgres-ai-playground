@@ -1,0 +1,11 @@
+# Ignore artifacts:
+.next
+
+# Lock files
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+.git
+node_modules
+
