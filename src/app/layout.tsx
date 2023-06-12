@@ -4,12 +4,11 @@ import '../styles/globals.css';
 import { Inter } from 'next/font/google';
 import { cn } from '@/utils/cn';
 import { Metadata } from 'next';
-import { env } from "@/env.mjs";
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(env.NEXT_PUBLIC_APP_URL ?? ''),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? ''),
   title: 'Postgres AI Playground',
   description:
     'Postgres playground where you can connect to your database and use AI to generate SQL queries',

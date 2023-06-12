@@ -2,6 +2,10 @@ import { ratelimit } from '@/utils/ratelimit';
 import { OpenAIStream, OpenAIStreamPayload } from '@/utils/stream';
 import { NextRequest, NextResponse } from 'next/server';
 
+if (!process.env.OPENAI_API_KEY) {
+  throw new Error('Missing env var from OpenAI');
+}
+
 export const runtime = 'edge';
 
 export async function POST(req: NextRequest): Promise<Response> {
@@ -36,7 +40,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 
         --${prompt} 
                 
-        prefix the response before and after code with -- unless it is SQL code
+        prefix the response with -- unless it is SQL code
       `,
       },
     ],
