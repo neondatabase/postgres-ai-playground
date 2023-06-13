@@ -161,7 +161,7 @@ const icons: Record<keyof typeof IconsList, IconType> = {
   Sparkles: Sparkles,
 };
 
-interface IconProps {
+export interface IconProps {
   name: keyof typeof icons;
   className?: string;
 }
