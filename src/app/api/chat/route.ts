@@ -40,7 +40,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 
         --${prompt} 
                 
-        prefix the response with -- unless it is SQL code
+        prefix the response with -- unless it is SQL code before and after code
       `,
       },
     ],
