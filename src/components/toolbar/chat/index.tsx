@@ -21,6 +21,7 @@ export const Chat = () => {
   const { toast } = useToast();
 
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
+    api: `${process.env.NEXT_PUBLIC_REWRITE_URL}/api/chat`,
     onError(error) {
       toast({
         title: `Error: ${error}`,
