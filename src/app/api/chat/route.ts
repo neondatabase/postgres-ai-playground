@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
   const systemMessage: Message = {
     role: 'system',
     content:
-      'Only answer questions about PostgreSQL and the user provided database schema if any. Return only SQL code with no explanation',
+      'Only answer questions about PostgreSQL and the user provided database schema if any. Return only SQL code with no explanation. prefix the response with -- unless it is SQL code before and after code',
   };
 
   const userSchema: Message = { role: 'user', content: `database schema: ${schema}` };
