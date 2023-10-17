@@ -53,7 +53,9 @@ export const Sidebar = () => {
         <>
           {data && (
             <>
+              {/* @ts-ignore */}
               <Tables name="tables" tables={data.tables} />
+              {/* @ts-ignore */}
               <Tables name="views" tables={data.views} />
               <Functions data={data.functions} />
             </>

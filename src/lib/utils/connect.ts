@@ -150,10 +150,12 @@ const generateDatabaseSchema = (tables: any[], views: any[], functions: any[]) =
   let databaseSchema = `Table Name, Column, Data Type, Indexes, Triggers \n`;
 
   tables.forEach((table) => {
+    // @ts-ignore
     table.columns.forEach((column) => {
       databaseSchema += `${table.table_name}, ${column.column_name}, ${column.data_type
         }, ${table.indexes.join(';')}, ${table.triggers
           .map(
+            // @ts-ignore
             (trigger) =>
               `${trigger.trigger_name} (${trigger.trigger_type}) - ${trigger.function_name}`
           )
@@ -162,10 +164,13 @@ const generateDatabaseSchema = (tables: any[], views: any[], functions: any[]) =
   });
 
   views.forEach((view) => {
+    // @ts-ignore
     view.columns.forEach((column) => {
       databaseSchema += `${view.table_name}, ${column.column_name}, ${column.data_type
         }, ${view.indexes.join(';')}, ${view.triggers
           .map(
+            // @ts-ignore
+
             (trigger) =>
               `${trigger.trigger_name} (${trigger.trigger_type}) - ${trigger.function_name}`
           )
@@ -210,7 +215,9 @@ export const connect = async ({ connectionString, schema = 'public' }: ConnectOp
 
     const editorSchema = {
       schema: tables.reduce((acc, table) => {
+        // @ts-ignore
         acc[table.table_name] = table.columns.map(
+          // @ts-ignore
           (column) => column.column_name
         );
         return acc;
