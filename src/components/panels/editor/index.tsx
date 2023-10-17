@@ -18,7 +18,6 @@ import {
   hasConfiguredDatabaseAtom,
   queryAtom,
   queryResultAtom,
-  schemaAtom,
   showChatAtom,
 } from '~/lib/utils/atoms';
 import { runQuery } from '~/lib/utils/query';
@@ -27,7 +26,7 @@ import { theme } from './theme';
 type RunQuery = {
   query: string;
   connectionString: string;
-}
+};
 export const Editor = () => {
   const { toast } = useToast();
   const { resolvedTheme } = useTheme();
@@ -116,10 +115,7 @@ export const Editor = () => {
         height="93vh"
       />
       <div className="sticky bottom-10 mx-5 float-right">
-        <Button
-          onClick={executeQuery}
-          disabled={query.trimEnd() === '' || !hasConfiguredDatabase}
-        >
+        <Button onClick={executeQuery} disabled={query.trimEnd() === '' || !hasConfiguredDatabase}>
           <PlayIcon className="mr-1 h-4 w-4" />
           {isLoading ? 'Running...' : 'Run query'}
         </Button>

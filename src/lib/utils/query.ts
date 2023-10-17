@@ -19,7 +19,6 @@ export const runQuery = async ({ connectionString, query }: queryOptions) => {
 
     startTime = Date.now();
 
-
     return {
       rows: rows ?? [],
       rowCount: rowCount ?? 0,

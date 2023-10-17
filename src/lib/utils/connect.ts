@@ -152,29 +152,31 @@ const generateDatabaseSchema = (tables: any[], views: any[], functions: any[]) =
   tables.forEach((table) => {
     // @ts-ignore
     table.columns.forEach((column) => {
-      databaseSchema += `${table.table_name}, ${column.column_name}, ${column.data_type
-        }, ${table.indexes.join(';')}, ${table.triggers
-          .map(
-            // @ts-ignore
-            (trigger) =>
-              `${trigger.trigger_name} (${trigger.trigger_type}) - ${trigger.function_name}`
-          )
-          .join(';')}\n`;
+      databaseSchema += `${table.table_name}, ${column.column_name}, ${
+        column.data_type
+      }, ${table.indexes.join(';')}, ${table.triggers
+        .map(
+          // @ts-ignore
+          (trigger) =>
+            `${trigger.trigger_name} (${trigger.trigger_type}) - ${trigger.function_name}`
+        )
+        .join(';')}\n`;
     });
   });
 
   views.forEach((view) => {
     // @ts-ignore
     view.columns.forEach((column) => {
-      databaseSchema += `${view.table_name}, ${column.column_name}, ${column.data_type
-        }, ${view.indexes.join(';')}, ${view.triggers
-          .map(
-            // @ts-ignore
+      databaseSchema += `${view.table_name}, ${column.column_name}, ${
+        column.data_type
+      }, ${view.indexes.join(';')}, ${view.triggers
+        .map(
+          // @ts-ignore
 
-            (trigger) =>
-              `${trigger.trigger_name} (${trigger.trigger_type}) - ${trigger.function_name}`
-          )
-          .join(';')}\n`;
+          (trigger) =>
+            `${trigger.trigger_name} (${trigger.trigger_type}) - ${trigger.function_name}`
+        )
+        .join(';')}\n`;
     });
   });
 
@@ -211,7 +213,6 @@ export const connect = async ({ connectionString, schema = 'public' }: ConnectOp
     const functions = functionsResult.rows.map(mapFunction);
 
     const databaseSchema = generateDatabaseSchema(tables, views, functions);
-
 
     const editorSchema = {
       schema: tables.reduce((acc, table) => {
