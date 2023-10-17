@@ -2,10 +2,123 @@
 @tailwind components;
 @tailwind utilities;
 
+.resize-handle[data-resize-handle-active] {
+  --background-color: var(--green-8);
+}
+
 .ͼ2 .cm-gutters {
   @apply border-transparent;
 }
 
 .editor .cm-editor {
   @apply rounded-md p-5;
+}
+
+html[data-theme='light'] {
+  --sage-1: #fbfdfc;
+  --sage-2: #f7f9f8;
+  --sage-3: #fefefe;
+  --sage-4: #e6e9e8;
+  --sage-5: #dfe2e0;
+  --sage-6: #d7dad9;
+  --sage-7: #cbcfcd;
+  --sage-8: #b8bcba;
+  --sage-9: #868e8b;
+  --sage-10: #7c8481;
+  --sage-11: #5f6563;
+  --sage-12: #1a211e;
+
+  --green-1: #fbfefc;
+  --green-2: #f4fbf6;
+  --green-3: #e6f6eb;
+  --green-4: #d6f1df;
+  --green-5: #c4e8d1;
+  --green-6: #adddc0;
+  --green-7: #8eceaa;
+  --green-8: #5bb98b;
+  --green-9: #30a46c;
+  --green-10: #2b9a66;
+  --green-11: #218358;
+  --green-12: #193b2d;
+
+  --red-1: #fffcfc;
+  --red-2: #fff7f7;
+  --red-3: #feebec;
+  --red-4: #ffdbdc;
+  --red-5: #ffcdce;
+  --red-6: #fdbdbe;
+  --red-7: #f4a9aa;
+  --red-8: #eb8e90;
+  --red-9: #e5484d;
+  --red-10: #dc3e42;
+  --red-11: #ce2c31;
+  --red-12: #641723;
+
+  --yellow-1: #fdfdf9;
+  --yellow-2: #fefce9;
+  --yellow-3: #fffab8;
+  --yellow-4: #fff394;
+  --yellow-5: #ffe770;
+  --yellow-6: #f3d768;
+  --yellow-7: #e4c767;
+  --yellow-8: #d5ae39;
+  --yellow-9: #ffe629;
+  --yellow-10: #ffdc00;
+  --yellow-11: #9e6c00;
+  --yellow-12: #473b1f;
+}
+
+:root,
+html[data-theme='dark'] {
+  --sage-1: #101211;
+  --sage-2: #171918;
+  --sage-3: #202221;
+  --sage-4: #272a29;
+  --sage-5: #2e3130;
+  --sage-6: #373b39;
+  --sage-7: #444947;
+  --sage-8: #5b625f;
+  --sage-9: #63706b;
+  --sage-10: #717d79;
+  --sage-11: #adb5b2;
+  --sage-12: #eceeed;
+
+  --green-1: #0e1512;
+  --green-2: #121b17;
+  --green-3: #132d21;
+  --green-4: #113b29;
+  --green-5: #174933;
+  --green-6: #20573e;
+  --green-7: #28684a;
+  --green-8: #2f7c57;
+  --green-9: #30a46c;
+  --green-10: #33b074;
+  --green-11: #3dd68c;
+  --green-12: #b1f1cb;
+
+  --red-1: #191111;
+  --red-2: #201314;
+  --red-3: #3b1219;
+  --red-4: #500f1c;
+  --red-5: #611623;
+  --red-6: #72232d;
+  --red-7: #8c333a;
+  --red-8: #b54548;
+  --red-9: #e5484d;
+  --red-10: #ec5d5e;
+  --red-11: #ff9592;
+  --red-12: #ffd1d9;
+
+  --yellow-1: #14120b;
+  --yellow-2: #1b180f;
+  --yellow-3: #2d2305;
+  --yellow-4: #362b00;
+  --yellow-5: #433500;
+  --yellow-6: #524202;
+  --yellow-7: #665417;
+  --yellow-8: #836a21;
+  --yellow-9: #ffe629;
+  --yellow-10: #ffff57;
+  --yellow-11: #f5e147;
+  --yellow-12: #f6eeb4;
 }
