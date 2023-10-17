@@ -1,42 +1,32 @@
 'use client';
-import { ThemeProvider } from 'next-themes';
-import { Toaster } from 'react-hot-toast';
-import { Analytics } from '@vercel/analytics/react';
 import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from '@/lib/query-client';
-import React from "react";
+import { Provider, useAtom } from 'jotai';
+import { ThemeProvider } from 'next-themes';
+import { useHotkeys } from 'react-hotkeys-hook';
+import { Toaster } from '~/components/ui/toast/toaster';
+import { queryClient } from '~/lib/query-client';
+import { showChatAtom } from '~/lib/utils/atoms';
+import { TooltipProvider } from './ui/tooltip';
 
-type ProvidersProps = {
+type Props = {
   children: React.ReactNode;
 };
 
-export default function Providers({ children }: ProvidersProps) {
+export default function Providers({ children }: Props) {
+  const [showChat, setshowChat] = useAtom(showChatAtom);
+
+  useHotkeys('meta+k', () => setshowChat(true), [showChat]);
+
   return (
     <ThemeProvider attribute="data-theme">
-      <QueryClientProvider client={queryClient}>
-        <Analytics />
-        <Toaster
-          containerStyle={{}}
-          position="bottom-right"
-          toastOptions={{
-            success: {
-              style: {
-                color: 'var(--color-text-gray-base)',
-                backgroundColor: 'var(--color-bg-element)',
-              },
-              duration: 4000,
-            },
-            error: {
-              style: {
-                color: 'var(--color-text-gray-base)',
-                backgroundColor: 'var(--color-bg-element)',
-              },
-              duration: 4000,
-            },
-          }}
-        />
-        {children}
-      </QueryClientProvider>
+      <Provider>
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            <Toaster />
+            {children}
+          </TooltipProvider>
+        </QueryClientProvider>
+      </Provider>
     </ThemeProvider>
   );
 }
